@@ -1,8 +1,6 @@
 
 Att göra
 ========
-Byta paketnamn till min standard
-
 Shutdown på indexsidan
 
 stänga av applikationen https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
@@ -13,6 +11,10 @@ Datum och tid på indexsidan
 KLART
 =====
 2020-09-26
+Byta testfilmer till något neutralt
+
+Byta paketnamn till min standard
+
 Indexpage - få upp första sidan i Eclipse och i paketerad jar
 	Eclipse
 		Ställ dig i HFPhoto

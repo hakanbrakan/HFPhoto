@@ -82,10 +82,10 @@ public class GreetingController {
 	public FileSystemResource videoSource(@RequestParam(value="id", required=true) int id) {
 		System.out.println("id: " + id);
 		if (id == 4)  {
-			return new FileSystemResource(new File("/Users/inger/gitRepos/gs-serving-web-content/complete/src/main/resources/2020-08-10 16.30.28.mp4"));
+			return new FileSystemResource(new File("/Users/inger/gitRepos/HFPhoto/src/main/resources/2020-09-26 22.53.18.mov"));
 			
 		} else {
-			return new FileSystemResource(new File("/Users/inger/gitRepos/gs-serving-web-content/complete/src/main/resources/2020-08-11 08.45.02.mov"));
+			return new FileSystemResource(new File("/Users/inger/gitRepos/HFPhoto/src/main/resources/2020-09-26 22.53.28.mov"));
 				
 		}
 	}
