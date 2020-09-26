@@ -1,0 +1,25 @@
+
+Att göra
+========
+
+Datum och tid på indexsidan
+
+Shutdown på indexsidan
+
+stänga av applikationen https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
+     https://www.baeldung.com/spring-boot-shutdown
+
+KLART
+=====
+2020-09-26
+Indexpage - få upp första sidan i Eclipse och i paketerad jar
+	Eclipse
+		Ställ dig i HFPhoto
+		Kör ./mvnw spring-boot:run
+		Surfa till localhost:8080
+	kommandoraden
+		Ställ dig i HFPhoto
+		Kör ./mvnw clean package
+		Ställ dig i HFPhoto/target
+		Kör java -jar hfphoto-0.0.1-SNAPSHOT.jar
+		Surfa till localhost:8080

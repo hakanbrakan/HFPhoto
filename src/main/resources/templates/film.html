@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+Filmsidan två
+
+<!-- 
+<video width="320" height="240" autoplay>
+  <source src="/movie?name=movie.mp4" type="video/mp4">
+  <source src="/videos?name=ffff" type="video/ogg">
+Your browser does not support the video tag.
+</video>
+ -->
+
+<video width="auto" height="600" controls style=" margin-left: auto; margin-right: auto; display: block;">
+    <source th:src="@{/videosrc(id=4)}" type="video/mp4">
+</video>
+<video width="auto" height="800" controls style=" margin-left: auto; margin-right: auto; display: block;">
+    <source th:src="@{/videosrc(id=5)}" type="video/mp4">
+</video>
+
+</body>
+</html>
