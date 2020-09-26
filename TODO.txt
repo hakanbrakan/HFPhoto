@@ -1,6 +1,7 @@
 
 Att göra
 ========
+Byta paketnamn till min standard
 
 Shutdown på indexsidan
 
@@ -23,6 +24,9 @@ Indexpage - få upp första sidan i Eclipse och i paketerad jar
 		Ställ dig i HFPhoto/target
 		Kör java -jar hfphoto-0.0.1-SNAPSHOT.jar
 		Surfa till localhost:8080
+
+Ta bort gammalt testpaket
+
 Datum och tid på greetingsidan
 
 		
