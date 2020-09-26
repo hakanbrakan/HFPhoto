@@ -2,12 +2,12 @@
 Att göra
 ========
 
-Datum och tid på indexsidan
-
 Shutdown på indexsidan
 
 stänga av applikationen https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
      https://www.baeldung.com/spring-boot-shutdown
+
+Datum och tid på indexsidan
 
 KLART
 =====
@@ -23,3 +23,6 @@ Indexpage - få upp första sidan i Eclipse och i paketerad jar
 		Ställ dig i HFPhoto/target
 		Kör java -jar hfphoto-0.0.1-SNAPSHOT.jar
 		Surfa till localhost:8080
+Datum och tid på greetingsidan
+
+		
