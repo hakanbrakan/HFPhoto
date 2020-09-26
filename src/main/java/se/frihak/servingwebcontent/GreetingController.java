@@ -1,4 +1,4 @@
-package com.example.servingwebcontent;
+package se.frihak.servingwebcontent;
 
 import java.io.File;
 import java.io.FileInputStream;

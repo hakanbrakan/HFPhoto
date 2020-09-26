@@ -1,4 +1,4 @@
-package com.example.servingwebcontent;
+package se.frihak.servingwebcontent;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
