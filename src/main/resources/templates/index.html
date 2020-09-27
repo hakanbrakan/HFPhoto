@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>HFPhoto</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p><h2>Detta är startsidan - index i templates</h2>
+	<h2>Album</h2>
+	Skapa nytt album
+    <p>Get your greeting <a href="/greeting">here</a></p>
+    <p>Get your image <a href="/image">here</a></p>
+    <p>Titta på <a href="/film">film</a></p>
+    <p th:text="startsida" />
+    <p>Current time is <span th:text="${serverTime}"></span>
+</body>
+</html>

@@ -6,10 +6,12 @@ Shutdown på indexsidan
 stänga av applikationen https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
      https://www.baeldung.com/spring-boot-shutdown
 
-Datum och tid på indexsidan
-
 KLART
 =====
+2020-09-27
+Datum och tid på indexsidan
+
+
 2020-09-26
 Byta testfilmer till något neutralt
 

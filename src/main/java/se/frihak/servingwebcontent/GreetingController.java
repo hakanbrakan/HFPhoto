@@ -31,6 +31,14 @@ public class GreetingController {
 		return "greeting";
 	}
 
+	@GetMapping("/")
+	public String startpage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		model.addAttribute("name", name);
+		LocalDateTime idag = LocalDateTime.now();
+		model.addAttribute("serverTime", "startpage+"+idag.toString());
+		return "index";
+	}
+
 	@GetMapping("/image")
 	public String image(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		model.addAttribute("name", name);
