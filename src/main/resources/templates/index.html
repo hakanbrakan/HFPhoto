@@ -7,11 +7,40 @@
 <body>
 	<p><h2>Detta är startsidan - index i templates</h2>
 	<h2>Album</h2>
-	Skapa nytt album
+
+
+	<table>
+    <thead>
+        <tr>
+            <th> Album </th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr th:if="${album.empty}">
+            <td colspan="2"> Finns inga album </td>
+        </tr>
+        <tr th:each="ettAlbum : ${album}">
+            <td><span th:text="${ettAlbum.Namn}"></span></td>
+        </tr>
+    </tbody>
+    </table>
+
+
+
+
+<p>
+	
+	<form action="/newAlbum" method="post">
+      <label for="albumname">Skapa nytt album:</label><input type="text" id="albumname" name="albumname" value="<namn>"><br>
+      <input type="submit" value="Skapa">
+    </form> 
+	
+	
     <p>Get your greeting <a href="/greeting">here</a></p>
     <p>Get your image <a href="/image">here</a></p>
     <p>Titta på <a href="/film">film</a></p>
-    <p th:text="startsida" />
+    <p th:text="startsidansåklart" />
+    <p>startsidan såklart</p>
     <p>Current time is <span th:text="${serverTime}"></span>
 </body>
 </html>

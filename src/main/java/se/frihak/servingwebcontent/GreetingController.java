@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
@@ -15,10 +16,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import se.frihak.album.Album;
+import se.frihak.album.Albums;
 
 @Controller
 public class GreetingController {
@@ -36,7 +41,21 @@ public class GreetingController {
 		model.addAttribute("name", name);
 		LocalDateTime idag = LocalDateTime.now();
 		model.addAttribute("serverTime", "startpage+"+idag.toString());
+		System.out.println("i startsidan");
+		Albums albums = new Albums();
+		List<Album> minaAlbum = albums.getAlbumlist();
+		model.addAttribute("album", minaAlbum);
+		System.out.println(model);
 		return "index";
+	}
+
+	@PostMapping("/newAlbum")
+	public String newAlbum(@RequestParam(name="albumname", required=false, defaultValue="World") String name, Model model) {
+		model.addAttribute("albumName", name);
+		System.out.println(model);
+		Albums albums = new Albums();
+		albums.createNewAlbumWithName(name);
+		return "redirect:/";
 	}
 
 	@GetMapping("/image")
