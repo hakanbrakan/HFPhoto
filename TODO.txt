@@ -1,8 +1,6 @@
 
 Att göra
 ========
-Indexsidan
-	öppna album
 
 Hantera om albumrootpath saknas - idag kastas undantag
 
@@ -32,6 +30,7 @@ KLART
 =====
 2020-10-01
 Indexsidan
+	öppna album
 	create new album
 	lista alla album
 

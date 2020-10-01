@@ -84,6 +84,13 @@ public class GreetingController {
     }
 
 	
+	@GetMapping("/album")
+	public String getAlbum(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		model.addAttribute("albumName", name);
+		System.out.println("model: " + model);
+		return "album";
+	}
+	
 	@GetMapping("/film")
 	public String film(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		model.addAttribute("name", name);

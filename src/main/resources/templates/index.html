@@ -5,8 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<p><h2>Detta är startsidan - index i templates</h2>
-	<h2>Album</h2>
+	<p>
+	<h2>HFPhoto</h2>
 
 
 	<table>
@@ -20,7 +20,7 @@
             <td colspan="2"> Finns inga album </td>
         </tr>
         <tr th:each="ettAlbum : ${album}">
-            <td><span th:text="${ettAlbum.Namn}"></span></td>
+            <td><a th:href="@{/album?name=}+${ettAlbum.Namn}"><span th:text="${ettAlbum.Namn}"></span></a></td>
         </tr>
     </tbody>
     </table>
