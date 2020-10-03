@@ -10,5 +10,15 @@ Ett album
 
 <p>
 Här visas album: <span th:text="${albumName}"></span>
+<p>
+
+<form action="/import" enctype="multipart/form-data">
+	<input type="hidden" id="albumName" name="albumName" th:value="${albumName}"></input>
+    <label for="fileToUpload">Filer att importera:</label>
+    <input type="file" name="fileToUpload" id="fileToUpload" multiple>
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+
+
 </body>
 </html>

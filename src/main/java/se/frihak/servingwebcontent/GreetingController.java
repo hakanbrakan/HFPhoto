@@ -58,6 +58,21 @@ public class GreetingController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/import")
+	public String importera(@RequestParam(name="fileToUpload", required=false, defaultValue="defaultFileToUpload") File name, @RequestParam(name="albumName", defaultValue="hittasInte") String albumName, Model model) throws IOException {
+		String pathToPicturesToImport = "/Users/inger/gitRepos/HFPhoto/src/main/resources/";
+		System.out.println(pathToPicturesToImport);
+		
+		//flytta bilder till rätt album
+		Albums albums = new Albums();
+		Album album = albums.getAlbum(albumName);
+		album.importPicturesFrom(pathToPicturesToImport);
+		
+		//redirect till sökresultat med sökta bilder som saknar attribut
+		model.addAttribute("name", "kalle");
+		return "redirect:/";
+	}
+
 	@GetMapping("/image")
 	public String image(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		model.addAttribute("name", name);

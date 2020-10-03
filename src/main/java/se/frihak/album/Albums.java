@@ -17,6 +17,7 @@ public class Albums {
 		Path path = Paths.get("/Users/inger/Documents/MinaAlbum", albumname);
 		try {
 			Files.createDirectories(path);
+			Files.createDirectories(Paths.get(path.toString(),"pictures"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -30,11 +31,21 @@ public class Albums {
 		File[] filer = folder.listFiles();
 		for (File file : filer) {
 			if (file.isDirectory()) {
-				lista.add(new Album(file.getName()));
+				lista.add(new Album(file));
 			}
 		}
 
 		return lista;
+	}
+
+	public Album getAlbum(String albumName) {
+		List<Album> list = getAlbumlist();
+		for (Album album : list) {
+			if (album.getNamn().equals(albumName)) {
+				return album;
+			}
+		}
+		return null;
 	}
 
 }
