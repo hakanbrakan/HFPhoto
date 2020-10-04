@@ -93,4 +93,10 @@ public class Album {
 		return stream;
 	}
 
+	public File getFile(String id) {
+		File picFolder = getPictureFolder();
+		Path newPath = Paths.get(picFolder.toString(), id);
+		return newPath.toFile();
+	}
+
 }

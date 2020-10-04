@@ -147,11 +147,21 @@ public class GreetingController {
 				.body(video);
 	}
 	
-	@GetMapping(value = "/videosrc", produces = "video/mp4")
+	@GetMapping(value = "/video", produces = "video/mp4")
 	@ResponseBody
-	public FileSystemResource videoSource(@RequestParam(value="id", required=true) int id) {
+	public FileSystemResource videoSource(@RequestParam(value="albumName", required=true) String albumName, @RequestParam(value="id", required=true) String id) {
+		Albums albums = new Albums();
+		Album album = albums.getAlbum(albumName);
+
+		return new FileSystemResource(album.getFile(id));
+	}
+	
+	@GetMapping(value = "/videosrcTABORT", produces = "video/mp4")
+	@ResponseBody
+	public FileSystemResource videoSourceTABORT(@RequestParam(value="id", required=true) String id) {
 		System.out.println("id: " + id);
-		if (id == 4)  {
+		
+		if (id.equalsIgnoreCase("fff"))  {
 			return new FileSystemResource(new File("/Users/inger/gitRepos/HFPhoto/src/main/resources/2020-09-26 22.53.18.mov"));
 			
 		} else {
@@ -159,6 +169,5 @@ public class GreetingController {
 				
 		}
 	}
-	
 	
 }
