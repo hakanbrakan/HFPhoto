@@ -1,8 +1,11 @@
 package se.frihak.album;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -32,19 +35,12 @@ public class Album {
 		// TODO Auto-generated method stub
 		//Nu kopierar vi filer
 		System.out.println("kopiera från " + pathToPicturesToImport);
-		FilenameFilter filter = new FilenameFilter() {
-			@Override
-			public boolean accept(File dir, String name) {
-				return name.equalsIgnoreCase("pictures");
-			}
-		};
-		File picFolder = file.listFiles(filter )[0];
-		System.out.println(picFolder);
+		File picFolder = getPictureFolder();
 		
 		FilenameFilter pictureFilter = new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String name) {
-				return name.endsWith(".mov") || name.endsWith(".jpg");
+				return name.endsWith(".mov") || name.endsWith(".mp4") || name.endsWith(".jpg");
 			}
 		};
 		File[] filer = Paths.get(pathToPicturesToImport).toFile().listFiles(pictureFilter );
@@ -63,6 +59,17 @@ public class Album {
 
 	}
 
+	private File getPictureFolder() {
+		FilenameFilter filter = new FilenameFilter() {
+			@Override
+			public boolean accept(File dir, String name) {
+				return name.equalsIgnoreCase("pictures");
+			}
+		};
+		File picFolder = file.listFiles(filter )[0];
+		return picFolder;
+	}
+
 	private List<Soktraff> createSearchResultsFrom(List<Path> importedPictures) {
 		List<Soktraff> list = new ArrayList<Soktraff>();
 		for (Path picturePath : importedPictures) {
@@ -76,6 +83,14 @@ public class Album {
 	private boolean isPicture(Path picturePath) {
 		Path name = picturePath.getFileName();
 		return name.toString().endsWith(".jpg");
+	}
+
+	public InputStream getFileInputStream(String pictureName) throws FileNotFoundException {
+		File picFolder = getPictureFolder();
+		Path newPath = Paths.get(picFolder.toPath().toString(), pictureName);
+		FileInputStream stream = new FileInputStream(newPath.toString());
+		// TODO Auto-generated method stub
+		return stream;
 	}
 
 }

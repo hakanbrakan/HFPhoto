@@ -8,6 +8,10 @@ public class Soktraff {
 		return picturePath;
 	}
 
+	public String getPictureName() {
+		return getPicturePath().getFileName().toString();
+	}
+
 	public boolean isPicture() {
 		return isPicture;
 	}

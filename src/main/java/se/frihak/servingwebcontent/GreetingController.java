@@ -62,7 +62,8 @@ public class GreetingController {
 
 	@GetMapping("/import")
 	public String importera(@RequestParam(name="fileToUpload", required=false, defaultValue="defaultFileToUpload") File name, @RequestParam(name="albumName", defaultValue="hittasInte") String albumName, Model model) throws IOException {
-		String pathToPicturesToImport = "/Users/inger/gitRepos/HFPhoto/src/main/resources/";
+		//String pathToPicturesToImport = "/Users/inger/gitRepos/HFPhoto/src/main/resources/";
+		String pathToPicturesToImport = "/Users/inger/Downloads/Camera Uploads/";
 		System.out.println(pathToPicturesToImport);
 		
 		//flytta bilder till rätt album
@@ -84,9 +85,26 @@ public class GreetingController {
 	}
 
 	
-    @RequestMapping(value = "/sid", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    @RequestMapping(value = "/picture", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<byte[]> getPicture(@RequestParam(name="albumName") String albumName, @RequestParam(name="pictureName") String pictureName) throws IOException {
+
+		Albums albums = new Albums();
+		Album album = albums.getAlbum(albumName);
+
+        byte[] bytes = StreamUtils.copyToByteArray(album.getFileInputStream(pictureName));
+
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(bytes);
+    }
+
+	
+    @RequestMapping(value = "/sidTABORTDENNA", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<byte[]> getImage(@RequestParam(name="name", required=false, defaultValue="e16_e17") String name) throws IOException {
 
+    		//TODO Denna kan nog tas bort
+    	
         ClassPathResource imgFile = new ClassPathResource("1965075.jpg");
 //        FileInputStream fil = new FileInputStream("/Users/inger/gitRepos/gs-serving-web-content/complete/src/main/resources/1965075.jpg");
 //        FileInputStream fil = new FileInputStream("/Users/inger/Downloads/e16_e17.jpg");
