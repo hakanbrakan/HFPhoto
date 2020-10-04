@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 
 public class Album {
@@ -25,7 +26,8 @@ public class Album {
 		return "Album [namn=" + getNamn() + "]";
 	}
 
-	public void importPicturesFrom(String pathToPicturesToImport) throws IOException {
+	public ArrayList<Path> importPicturesFrom(String pathToPicturesToImport) throws IOException {
+		ArrayList<Path> importedPictures = new ArrayList<Path>();
 		// TODO Auto-generated method stub
 		//Nu kopierar vi filer
 		System.out.println("kopiera från " + pathToPicturesToImport);
@@ -50,8 +52,11 @@ public class Album {
 				System.out.println(file.toString());
 				Path newPath = Paths.get(picFolder.toPath().toString(), file.getName());
 				Files.copy(file.toPath(), newPath);
+				importedPictures.add(newPath);
 			}
 		}
+		
+		return importedPictures;
 
 	}
 
