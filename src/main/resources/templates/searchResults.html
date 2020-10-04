@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>HFPhoto</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p>
+	<h2>Sökresultat</h2>
+
+
+	<table>
+    <thead>
+        <tr>
+            <th> Album <span th:text="${albumName}"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+	    <tr th:if="${importedPictures.empty}">
+            <td colspan="2"> Hittade inga bilder </td>
+        </tr>
+        <tr th:each="enTraff : ${importedPictures}">
+            <td>
+               <span th:text="${enTraff.picturePath}"></span>
+               <span th:text="${enTraff.isPicture}"></span>
+               
+            	   <!-- <a th:href="@{/album?name=}+${ettAlbum.Namn}"><span th:text="${ettAlbum.Namn}"></span></a>  -->
+            	</td>
+            <td th:if="${enTraff.isPicture}">
+               <span>bild</span>
+               <img src="/sid?name=e14_e15_e15-1_e15-2" width="80%">
+            	</td>
+            <td th:unless="${enTraff.isPicture}">
+               <span>film</span>
+				<video width="auto" height="600" controls style=" margin-left: auto; margin-right: auto; display: block;">
+				    <source th:src="@{/videosrc(id=4)}" type="video/mp4">
+				</video>
+            	</td>
+        </tr>
+    </tbody>
+    </table>
+
+
+	
+</body>
+</html>

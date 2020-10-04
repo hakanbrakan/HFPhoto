@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import se.frihak.album.Album;
 import se.frihak.album.Albums;
+import se.frihak.album.Soktraff;
 
 @Controller
 public class GreetingController {
@@ -67,12 +68,12 @@ public class GreetingController {
 		//flytta bilder till rätt album
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
-		List<Path> importedPictures = album.importPicturesFrom(pathToPicturesToImport);
+		List<Soktraff> importedPictures = album.importPicturesFrom(pathToPicturesToImport);
 		
 		//redirect till sökresultat med sökta bilder som saknar attribut
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("importedPictures", importedPictures);
-		return "redirect:/";
+		return "searchResults";
 	}
 
 	@GetMapping("/image")

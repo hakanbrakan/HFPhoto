@@ -27,7 +27,7 @@ public class Album {
 		return "Album [namn=" + getNamn() + "]";
 	}
 
-	public List<Path> importPicturesFrom(String pathToPicturesToImport) throws IOException {
+	public List<Soktraff> importPicturesFrom(String pathToPicturesToImport) throws IOException {
 		List<Path> importedPictures = new ArrayList<Path>();
 		// TODO Auto-generated method stub
 		//Nu kopierar vi filer
@@ -57,8 +57,25 @@ public class Album {
 			}
 		}
 		
-		return importedPictures;
+		List<Soktraff> soktraffar = createSearchResultsFrom(importedPictures);
+		
+		return soktraffar;
 
+	}
+
+	private List<Soktraff> createSearchResultsFrom(List<Path> importedPictures) {
+		List<Soktraff> list = new ArrayList<Soktraff>();
+		for (Path picturePath : importedPictures) {
+			Soktraff traff = Soktraff.getInstance(picturePath, isPicture(picturePath));
+			list.add(traff);
+		}
+
+		return list;
+	}
+
+	private boolean isPicture(Path picturePath) {
+		Path name = picturePath.getFileName();
+		return name.toString().endsWith(".jpg");
 	}
 
 }

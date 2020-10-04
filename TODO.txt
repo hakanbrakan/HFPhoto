@@ -29,7 +29,7 @@ http://dolszewski.com/spring/spring-boot-application-properties-file/
 KLART
 =====
 2020-10-03
-Kopierar file vid import
+Kopierar filer vid import
 
 2020-10-01
 Indexsidan
