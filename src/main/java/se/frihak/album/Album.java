@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Album {
@@ -26,8 +27,8 @@ public class Album {
 		return "Album [namn=" + getNamn() + "]";
 	}
 
-	public ArrayList<Path> importPicturesFrom(String pathToPicturesToImport) throws IOException {
-		ArrayList<Path> importedPictures = new ArrayList<Path>();
+	public List<Path> importPicturesFrom(String pathToPicturesToImport) throws IOException {
+		List<Path> importedPictures = new ArrayList<Path>();
 		// TODO Auto-generated method stub
 		//Nu kopierar vi filer
 		System.out.println("kopiera från " + pathToPicturesToImport);

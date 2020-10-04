@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.core.io.ClassPathResource;
@@ -68,7 +67,7 @@ public class GreetingController {
 		//flytta bilder till rätt album
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
-		ArrayList<Path> importedPictures = album.importPicturesFrom(pathToPicturesToImport);
+		List<Path> importedPictures = album.importPicturesFrom(pathToPicturesToImport);
 		
 		//redirect till sökresultat med sökta bilder som saknar attribut
 		model.addAttribute("albumName", albumName);
