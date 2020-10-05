@@ -12,6 +12,9 @@ Ett album
 Här visas album: <span th:text="${albumName}"></span>
 <p>
 
+Sök alla utan <a th:href="@{/searchAllWithoutIndex?albumName=}+${albumName}"><span>index</span></a>
+<p>
+
 <form action="/import" enctype="multipart/form-data">
 	<input type="hidden" id="albumName" name="albumName" th:value="${albumName}"></input>
     <label for="fileToUpload">Filer att importera:</label>

@@ -99,4 +99,35 @@ public class Album {
 		return newPath.toFile();
 	}
 
+	public List<Soktraff> searchAllWithoutIndex() {
+		List<Soktraff> list = new ArrayList<Soktraff>();
+		File picFolder = getPictureFolder();
+		File pictureIndexPath = getPictureIndexPath();
+		
+		File[] allPics = picFolder.listFiles();
+		for (File onePic : allPics) {
+			if (onePic.isFile() && !onePic.isHidden()) {
+				String picFilename = onePic.getName();
+				boolean exists = new File(pictureIndexPath, picFilename+".hfidx").exists();
+				if ( ! exists) {
+					Soktraff traff = Soktraff.getInstance(onePic.toPath(), isPicture(onePic.toPath()));
+					list.add(traff);
+				}
+			}
+		}
+
+		return list;
+	}
+
+	private File getPictureIndexPath() {
+		FilenameFilter filter = new FilenameFilter() {
+			@Override
+			public boolean accept(File dir, String name) {
+				return name.equalsIgnoreCase("pictureIndex");
+			}
+		};
+		File picIndex = file.listFiles(filter )[0];
+		return picIndex;
+	}
+
 }

@@ -77,6 +77,17 @@ public class GreetingController {
 		return "searchResults";
 	}
 
+	@GetMapping("/searchAllWithoutIndex")
+	public String sokAllaUtanIndex(@RequestParam(name="albumName", defaultValue="hittasInte") String albumName, Model model) throws IOException {
+		Albums albums = new Albums();
+		Album album = albums.getAlbum(albumName);
+		List<Soktraff> foundPictures = album.searchAllWithoutIndex();
+		
+		model.addAttribute("albumName", albumName);
+		model.addAttribute("importedPictures", foundPictures);
+		return "searchResults";
+	}
+
 	@GetMapping("/image")
 	public String image(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		model.addAttribute("name", name);
@@ -123,7 +134,7 @@ public class GreetingController {
 	@GetMapping("/album")
 	public String getAlbum(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		model.addAttribute("albumName", name);
-		System.out.println("model: " + model);
+
 		return "album";
 	}
 	
