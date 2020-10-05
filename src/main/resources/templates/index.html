@@ -11,12 +11,10 @@
 
 	<table>
     <thead>
-        <tr>
-            <th> Album </th>
-        </tr>
+        <tr><th> Album </th></tr>
     </thead>
     <tbody>
-	<tr th:if="${album.empty}">
+	    <tr th:if="${album.empty}">
             <td colspan="2"> Finns inga album </td>
         </tr>
         <tr th:each="ettAlbum : ${album}">
@@ -31,7 +29,7 @@
 <p>
 	
 	<form action="/newAlbum" method="post">
-      <label for="albumname">Skapa nytt album:</label><input type="text" id="albumname" name="albumname" placeholder="albumets namn"><br>
+      <label for="albumname">Nytt album:</label><input type="text" id="albumname" name="albumname" placeholder="albumets namn">
       <input type="submit" value="Skapa">
     </form> 
 	
@@ -39,8 +37,6 @@
     <p>Get your greeting <a href="/greeting">here</a></p>
     <p>Get your image <a href="/image">here</a></p>
     <p>Titta på <a href="/film">film</a></p>
-    <p th:text="startsidansåklart" />
-    <p>startsidan såklart</p>
-    <p>Current time is <span th:text="${serverTime}"></span>
+    <p><span th:text="${serverTime}"></span>
 </body>
 </html>

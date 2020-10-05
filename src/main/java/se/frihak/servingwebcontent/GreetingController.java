@@ -42,7 +42,7 @@ public class GreetingController {
 	public String startpage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		model.addAttribute("name", name);
 		LocalDateTime idag = LocalDateTime.now();
-		model.addAttribute("serverTime", "startpage+"+idag.toString());
+		model.addAttribute("serverTime", idag.toString());
 		System.out.println("i startsidan");
 		Albums albums = new Albums();
 		List<Album> minaAlbum = albums.getAlbumlist();
