@@ -3,7 +3,6 @@ package se.frihak.servingwebcontent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -89,9 +88,9 @@ public class GreetingController {
 	}
 
 	@GetMapping("/image")
-	public String image(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+	public String image(@RequestParam(name="name", required=false, defaultValue="NamnSaknas") String name, Model model) {
 		model.addAttribute("name", name);
-		System.out.println(name);
+
 		return "image";
 	}
 

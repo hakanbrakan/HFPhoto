@@ -3,7 +3,19 @@ package se.frihak.album;
 import java.nio.file.Path;
 
 public class Soktraff {
+	private Path picturePath;
+	private boolean isPicture;
+	
 
+	private Soktraff(Path picturePath, boolean isPicture) {
+		this.picturePath = picturePath;
+		this.isPicture = isPicture;
+	}
+	
+	public static Soktraff getInstance(Path picturePath, boolean isPicture) {
+		return new Soktraff(picturePath, isPicture);
+	}
+	
 	public Path getPicturePath() {
 		return picturePath;
 	}
@@ -18,18 +30,6 @@ public class Soktraff {
 
 	public boolean getIsPicture() {
 		return isPicture();
-	}
-
-	private Path picturePath;
-	private boolean isPicture;
-
-	private Soktraff(Path picturePath, boolean isPicture) {
-		this.picturePath = picturePath;
-		this.isPicture = isPicture;
-	}
-
-	public static Soktraff getInstance(Path picturePath, boolean isPicture) {
-		return new Soktraff(picturePath, isPicture);
 	}
 
 }
