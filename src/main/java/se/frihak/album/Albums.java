@@ -11,13 +11,13 @@ import java.util.List;
 public class Albums {
 
 	public void createNewAlbumWithName(String albumname) {
-		// TODO Auto-generated method stub
-		System.out.println("Nu skapas ett nytt album: " + albumname);
-		
 		Path path = Paths.get("/Users/inger/Documents/MinaAlbum", albumname);
+		
 		try {
 			Files.createDirectories(path);
 			Files.createDirectories(Paths.get(path.toString(),"pictures"));
+			Files.createDirectories(Paths.get(path.toString(),"pictureIndex"));
+			Files.createDirectories(Paths.get(path.toString(),"wordIndex"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
