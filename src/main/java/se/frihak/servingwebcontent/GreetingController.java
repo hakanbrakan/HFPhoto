@@ -180,4 +180,18 @@ public class GreetingController {
 		}
 	}
 	
+	@GetMapping(value = "/editIndexes")
+	public String editIndexes(@RequestParam(value="albumName", required=true) String albumName, @RequestParam(value="pictureName", required=true) String pictureName, Model model) {
+		Albums albums = new Albums();
+		Album album = albums.getAlbum(albumName);
+
+		Soktraff enBild = album.getPicture(pictureName);
+		
+		model.addAttribute("albumName", albumName);
+		model.addAttribute("enTraff", enBild);
+		//model.addAttribute("name", name);
+		//System.out.println("film: " + name);
+		return "editindexes";
+	}
+	
 }

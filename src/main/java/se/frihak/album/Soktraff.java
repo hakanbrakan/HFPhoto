@@ -2,7 +2,7 @@ package se.frihak.album;
 
 import java.nio.file.Path;
 
-public class Soktraff {
+public class Soktraff { //TODO Kanske döpa om till typ pictureinfo
 	private Path picturePath;
 	private boolean isPicture;
 	
