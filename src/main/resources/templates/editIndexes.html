@@ -20,12 +20,13 @@
             <td>
             	   <!-- 
             	   		<input type="hidden" id="*{allaIndex}" name="*{allaIndex}" th:value="*{allaIndex}"></input>
+			            <span th:text="${ettIndex}"></span>
             	   -->
             	   <form th:action="@{/updateIndexes}" th:object="${picInfoForm}" method="post">
             	   	
 			        <div th:each="ettIndex : *{allaIndex}">
 			            <input type="checkbox" th:field="*{valdaIndex}" th:value="${ettIndex}">
-			            <span th:text="${ettIndex}"></span>
+			            <label th:for="${#ids.prev('valdaIndex')}"  th:text="${ettIndex}">Index saknas</label>
 			        </div>
             	   
 					<div class="col-md-6 form-group">
