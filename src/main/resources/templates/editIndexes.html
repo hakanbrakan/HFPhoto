@@ -18,15 +18,22 @@
     <tbody>
         <tr>
             <td>
-               Visa index
-               <!-- 
-               <span th:text="${enTraff.picturePath}"></span>
-               <span th:text="${enTraff.isPicture}"></span>
-                -->
             	   <!-- 
-                <a th:href="@{/editIndexes(albumName=${albumName},pictureName=${enTraff.pictureName})}"><span>Edit</span></a>
-               
+            	   		<input type="hidden" id="*{allaIndex}" name="*{allaIndex}" th:value="*{allaIndex}"></input>
             	   -->
+            	   <form th:action="@{/updateIndexes}" th:object="${picInfoForm}" method="post">
+            	   	
+			        <div th:each="ettIndex : *{allaIndex}">
+			            <input type="checkbox" th:field="*{valdaIndex}" th:value="${ettIndex}">
+			            <span th:text="${ettIndex}"></span>
+			        </div>
+            	   
+					<div class="col-md-6 form-group">
+            			<label for="newIndex">Nya index:</label>
+            			<input type="text" name="newIndex" class="form-control" th:field="*{newIndex}">
+            			<input type="submit" value="Spara">
+            			</div>
+				</form>
             	</td>
             <td th:if="${enTraff.isPicture}">
                <img th:src="@{/picture?albumName=}+${albumName}+@{&pictureName=}+${enTraff.pictureName}" width="80%">

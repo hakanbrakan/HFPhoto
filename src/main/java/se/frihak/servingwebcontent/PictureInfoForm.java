@@ -1,0 +1,48 @@
+package se.frihak.servingwebcontent;
+
+import java.util.Arrays;
+
+public class PictureInfoForm {
+	public String newIndex;
+	private String[] allaIndex;
+	private String[] valdaIndex;
+	private boolean two;
+
+	public boolean isTwo() {
+		return two;
+	}
+
+	public void setTwo(boolean two) {
+		this.two = two;
+	}
+
+	public String[] getAllaIndex() {
+		return allaIndex;
+	}
+
+	public void setAllaIndex(String[] allaIndex) {
+		this.allaIndex = allaIndex;
+	}
+
+	public String[] getValdaIndex() {
+		return valdaIndex;
+	}
+
+	public void setValdaIndex(String[] valdaIndex) {
+		this.valdaIndex = valdaIndex;
+	}
+
+	public String getNewIndex() {
+		return newIndex;
+	}
+
+	public void setNewIndex(String newIndex) {
+		this.newIndex = newIndex;
+	}
+	
+	@Override
+	public String toString() {
+		return "PictureInfoForm [newIndex=" + newIndex + ", allaIndex=" + Arrays.toString(allaIndex) + ", valdaIndex=" + Arrays.toString(valdaIndex) + "]";
+	}
+	
+}

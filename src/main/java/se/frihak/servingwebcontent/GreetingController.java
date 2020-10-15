@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.core.io.ClassPathResource;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -186,12 +189,22 @@ public class GreetingController {
 		Album album = albums.getAlbum(albumName);
 
 		Soktraff enBild = album.getPicture(pictureName);
+		PictureInfoForm picInfoForm = new PictureInfoForm();
+		picInfoForm.setAllaIndex(new String[] { "One12", "Two", "Three" });
+		picInfoForm.setValdaIndex(new String[] { "Two", "Three" });
 		
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("enTraff", enBild);
-		//model.addAttribute("name", name);
-		//System.out.println("film: " + name);
+		model.addAttribute("picInfoForm", picInfoForm);
+
 		return "editindexes";
 	}
 	
+	@PostMapping("/updateIndexes")
+	public String newAlbum(@ModelAttribute PictureInfoForm picInfoForm, Model model) {
+		System.out.println(model);
+		System.out.println(picInfoForm);
+
+		return "editindexes";
+	}
 }

@@ -28,6 +28,16 @@ http://dolszewski.com/spring/spring-boot-application-properties-file/
 
 KLART
 =====
+2020-10-15
+formulärhantering: https://attacomsian.com/blog/spring-boot-thymeleaf-form-handling
+                   https://www.codejava.net/frameworks/spring-boot/spring-boot-thymeleaf-form-handling-tutorial
+                   https://spring.io/guides/gs/handling-form-submission/
+                   svår att läsa men verkar rätt info https://mkyong.com/spring-mvc/spring-mvc-checkbox-and-checkboxes-example/
+				  https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#checkbox-fields
+
+2020-10-06
+Embryo till sida att editera index
+
 2020-10-05
 Sök alla som saknar index
 
