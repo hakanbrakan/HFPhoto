@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import se.frihak.album.Album;
 import se.frihak.album.Albums;
-import se.frihak.album.Soktraff;
+import se.frihak.album.Picture;
 
 @Controller
 public class GreetingController {
@@ -67,7 +67,7 @@ public class GreetingController {
 		//flytta bilder till rätt album
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
-		List<Soktraff> importedPictures = album.importPicturesFrom(pathToPicturesToImport);
+		List<Picture> importedPictures = album.importPicturesFrom(pathToPicturesToImport);
 		
 		//redirect till sökresultat med sökta bilder som saknar attribut
 		model.addAttribute("albumName", albumName);
@@ -79,7 +79,7 @@ public class GreetingController {
 	public String sokAllaUtanIndex(@RequestParam(name="albumName", defaultValue="hittasInte") String albumName, Model model) throws IOException {
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
-		List<Soktraff> foundPictures = album.searchAllWithoutIndex();
+		List<Picture> foundPictures = album.searchAllWithoutIndex();
 		
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("importedPictures", foundPictures);
@@ -150,7 +150,7 @@ public class GreetingController {
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
 
-		Soktraff enBild = album.getPicture(pictureName);
+		Picture enBild = album.getPicture(pictureName);
 		PictureInfoForm picInfoForm = new PictureInfoForm();
 		picInfoForm.setAllaIndex(new String[] { "One123", "Two", "Three" });
 		picInfoForm.setValdaIndex(new String[] { "Two", "Three" });

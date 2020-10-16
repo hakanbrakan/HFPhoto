@@ -2,18 +2,18 @@ package se.frihak.album;
 
 import java.nio.file.Path;
 
-public class Soktraff { //TODO Kanske döpa om till typ pictureinfo
+public class Picture {
 	private Path picturePath;
 	private boolean isPicture;
 	
 
-	private Soktraff(Path picturePath, boolean isPicture) {
+	private Picture(Path picturePath, boolean isPicture) {
 		this.picturePath = picturePath;
 		this.isPicture = isPicture;
 	}
 	
-	public static Soktraff getInstance(Path picturePath, boolean isPicture) {
-		return new Soktraff(picturePath, isPicture);
+	public static Picture getInstance(Path picturePath, boolean isPicture) {
+		return new Picture(picturePath, isPicture);
 	}
 	
 	public Path getPicturePath() {

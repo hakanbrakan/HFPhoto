@@ -30,7 +30,7 @@ public class Album {
 		return "Album [namn=" + getNamn() + "]";
 	}
 
-	public List<Soktraff> importPicturesFrom(String pathToPicturesToImport) throws IOException {
+	public List<Picture> importPicturesFrom(String pathToPicturesToImport) throws IOException {
 		List<Path> importedPictures = new ArrayList<Path>();
 
 		//Nu kopierar vi filer
@@ -53,7 +53,7 @@ public class Album {
 			}
 		}
 		
-		List<Soktraff> soktraffar = createSearchResultsFrom(importedPictures);
+		List<Picture> soktraffar = createSearchResultsFrom(importedPictures);
 		
 		return soktraffar;
 
@@ -70,10 +70,10 @@ public class Album {
 		return picFolder;
 	}
 
-	private List<Soktraff> createSearchResultsFrom(List<Path> importedPictures) {
-		List<Soktraff> list = new ArrayList<Soktraff>();
+	private List<Picture> createSearchResultsFrom(List<Path> importedPictures) {
+		List<Picture> list = new ArrayList<Picture>();
 		for (Path picturePath : importedPictures) {
-			Soktraff traff = Soktraff.getInstance(picturePath, isPicture(picturePath));
+			Picture traff = Picture.getInstance(picturePath, isPicture(picturePath));
 			list.add(traff);
 		}
 
@@ -99,8 +99,8 @@ public class Album {
 		return newPath.toFile();
 	}
 
-	public List<Soktraff> searchAllWithoutIndex() {
-		List<Soktraff> list = new ArrayList<Soktraff>();
+	public List<Picture> searchAllWithoutIndex() {
+		List<Picture> list = new ArrayList<Picture>();
 		File picFolder = getPictureFolder();
 		File pictureIndexPath = getPictureIndexPath();
 		
@@ -110,7 +110,7 @@ public class Album {
 				String picFilename = onePic.getName();
 				boolean exists = new File(pictureIndexPath, picFilename+".hfidx").exists();
 				if ( ! exists) {
-					Soktraff traff = Soktraff.getInstance(onePic.toPath(), isPicture(onePic.toPath()));
+					Picture traff = Picture.getInstance(onePic.toPath(), isPicture(onePic.toPath()));
 					list.add(traff);
 				}
 			}
@@ -130,14 +130,14 @@ public class Album {
 		return picIndex;
 	}
 
-	public Soktraff getPicture(String pictureName) {
+	public Picture getPicture(String pictureName) {
 		File picFolder = getPictureFolder();
-		Soktraff traff = null;
+		Picture traff = null;
 		
 		File picture = new File(picFolder, pictureName);
 		List<PictureIndex> allaIndex = getPictureIndex(pictureName);
 		
-		traff = Soktraff.getInstance(picture.toPath(), isPicture(picture.toPath()));
+		traff = Picture.getInstance(picture.toPath(), isPicture(picture.toPath()));
 		return traff;
 	}
 
@@ -150,6 +150,7 @@ public class Album {
 			if (indexfile.isFile() && !indexfile.isHidden()) {
 				boolean exists = new File(pictureIndexPath, pictureName+".hfidx").exists();
 				if (exists) {
+					//TODO läs upp alla index
 				}
 			}
 			
