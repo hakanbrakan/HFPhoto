@@ -18,11 +18,8 @@
     <tbody>
         <tr>
             <td>
-            	   <!-- 
-            	   		<input type="hidden" id="*{allaIndex}" name="*{allaIndex}" th:value="*{allaIndex}"></input>
-			            <span th:text="${ettIndex}"></span>
-            	   -->
             	   <form th:action="@{/updateIndexes}" th:object="${picInfoForm}" method="post">
+					<input type="hidden" id="albumName" name="albumName" th:value="${albumName}"></input>
             	   	
 			        <div th:each="ettIndex : *{allaIndex}">
 			            <input type="checkbox" th:field="*{valdaIndex}" th:value="${ettIndex}">

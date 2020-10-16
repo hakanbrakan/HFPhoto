@@ -1,11 +1,8 @@
 package se.frihak.servingwebcontent;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.core.io.ClassPathResource;
@@ -64,7 +61,6 @@ public class GreetingController {
 
 	@GetMapping("/import")
 	public String importera(@RequestParam(name="fileToUpload", required=false, defaultValue="defaultFileToUpload") File name, @RequestParam(name="albumName", defaultValue="hittasInte") String albumName, Model model) throws IOException {
-		//String pathToPicturesToImport = "/Users/inger/gitRepos/HFPhoto/src/main/resources/";
 		String pathToPicturesToImport = "/Users/inger/Downloads/Camera Uploads/";
 		System.out.println(pathToPicturesToImport);
 		
@@ -113,26 +109,6 @@ public class GreetingController {
     }
 
 	
-    @RequestMapping(value = "/sidTABORTDENNA", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<byte[]> getImage(@RequestParam(name="name", required=false, defaultValue="e16_e17") String name) throws IOException {
-
-    		//TODO Denna kan nog tas bort
-    	
-        ClassPathResource imgFile = new ClassPathResource("1965075.jpg");
-//        FileInputStream fil = new FileInputStream("/Users/inger/gitRepos/gs-serving-web-content/complete/src/main/resources/1965075.jpg");
-//        FileInputStream fil = new FileInputStream("/Users/inger/Downloads/e16_e17.jpg");
-        FileInputStream fil = new FileInputStream("/Users/inger/Downloads/"+name+".jpg");
-//        byte[] bytes = StreamUtils.copyToByteArray(imgFile.getInputStream());
-        byte[] bytes = StreamUtils.copyToByteArray(fil);
-        System.out.println("test");
-
-        return ResponseEntity
-                .ok()
-                .contentType(MediaType.IMAGE_JPEG)
-                .body(bytes);
-    }
-
-	
 	@GetMapping("/album")
 	public String getAlbum(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		model.addAttribute("albumName", name);
@@ -169,20 +145,6 @@ public class GreetingController {
 		return new FileSystemResource(album.getFile(id));
 	}
 	
-	@GetMapping(value = "/videosrcTABORT", produces = "video/mp4")
-	@ResponseBody
-	public FileSystemResource videoSourceTABORT(@RequestParam(value="id", required=true) String id) {
-		System.out.println("id: " + id);
-		
-		if (id.equalsIgnoreCase("fff"))  {
-			return new FileSystemResource(new File("/Users/inger/gitRepos/HFPhoto/src/main/resources/2020-09-26 22.53.18.mov"));
-			
-		} else {
-			return new FileSystemResource(new File("/Users/inger/gitRepos/HFPhoto/src/main/resources/2020-09-26 22.53.28.mov"));
-				
-		}
-	}
-	
 	@GetMapping(value = "/editIndexes")
 	public String editIndexes(@RequestParam(value="albumName", required=true) String albumName, @RequestParam(value="pictureName", required=true) String pictureName, Model model) {
 		Albums albums = new Albums();
@@ -190,7 +152,7 @@ public class GreetingController {
 
 		Soktraff enBild = album.getPicture(pictureName);
 		PictureInfoForm picInfoForm = new PictureInfoForm();
-		picInfoForm.setAllaIndex(new String[] { "One12", "Two", "Three" });
+		picInfoForm.setAllaIndex(new String[] { "One123", "Two", "Three" });
 		picInfoForm.setValdaIndex(new String[] { "Two", "Three" });
 		
 		model.addAttribute("albumName", albumName);
@@ -201,10 +163,10 @@ public class GreetingController {
 	}
 	
 	@PostMapping("/updateIndexes")
-	public String newAlbum(@ModelAttribute PictureInfoForm picInfoForm, Model model) {
+	public String uppdateraIndex(@ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
 		System.out.println(model);
 		System.out.println(picInfoForm);
 
-		return "editindexes";
+		return sokAllaUtanIndex(albumName, model);
 	}
 }

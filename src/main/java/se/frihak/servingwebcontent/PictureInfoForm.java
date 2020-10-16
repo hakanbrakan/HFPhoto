@@ -6,15 +6,6 @@ public class PictureInfoForm {
 	public String newIndex;
 	private String[] allaIndex;
 	private String[] valdaIndex;
-	private boolean two;
-
-	public boolean isTwo() {
-		return two;
-	}
-
-	public void setTwo(boolean two) {
-		this.two = two;
-	}
 
 	public String[] getAllaIndex() {
 		return allaIndex;

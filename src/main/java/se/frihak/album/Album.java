@@ -32,7 +32,7 @@ public class Album {
 
 	public List<Soktraff> importPicturesFrom(String pathToPicturesToImport) throws IOException {
 		List<Path> importedPictures = new ArrayList<Path>();
-		// TODO Auto-generated method stub
+
 		//Nu kopierar vi filer
 		System.out.println("kopiera från " + pathToPicturesToImport);
 		File picFolder = getPictureFolder();
