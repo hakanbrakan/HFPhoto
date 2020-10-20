@@ -135,27 +135,9 @@ public class Album {
 		Picture traff = null;
 		
 		File picture = new File(picFolder, pictureName);
-		List<PictureIndex> allaIndex = getPictureIndex(pictureName);
 		
 		traff = Picture.getInstance(picture.toPath(), isPicture(picture.toPath()));
 		return traff;
-	}
-
-	private List<PictureIndex> getPictureIndex(String pictureName) {
-		List<PictureIndex> allaIndex = new ArrayList<PictureIndex>();
-		File pictureIndexPath = getPictureIndexPath();
-		File indexfile = new File(pictureIndexPath, pictureName+".hfidx");
-		
-		if (indexfile.exists()) {
-			if (indexfile.isFile() && !indexfile.isHidden()) {
-				boolean exists = new File(pictureIndexPath, pictureName+".hfidx").exists();
-				if (exists) {
-					//TODO läs upp alla index
-				}
-			}
-			
-		}
-		return allaIndex;
 	}
 
 }

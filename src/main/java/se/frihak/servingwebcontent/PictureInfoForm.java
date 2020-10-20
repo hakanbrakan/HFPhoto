@@ -6,6 +6,15 @@ public class PictureInfoForm {
 	public String newIndex;
 	private String[] allaIndex;
 	private String[] valdaIndex;
+	private String pictureName;
+
+	public String getPictureName() {
+		return pictureName;
+	}
+
+	public void setPictureName(String pictureName) {
+		this.pictureName = pictureName;
+	}
 
 	public String[] getAllaIndex() {
 		return allaIndex;
@@ -33,7 +42,7 @@ public class PictureInfoForm {
 	
 	@Override
 	public String toString() {
-		return "PictureInfoForm [newIndex=" + newIndex + ", allaIndex=" + Arrays.toString(allaIndex) + ", valdaIndex=" + Arrays.toString(valdaIndex) + "]";
+		return "PictureInfoForm [newIndex=" + newIndex + ", allaIndex=" + Arrays.toString(allaIndex) + ", valdaIndex=" + Arrays.toString(valdaIndex) + ", pictureName=" + pictureName + "]";
 	}
 	
 }

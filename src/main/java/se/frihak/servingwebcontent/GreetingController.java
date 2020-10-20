@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import se.frihak.album.Album;
 import se.frihak.album.Albums;
 import se.frihak.album.Picture;
+import se.frihak.index.IndexHandler;
 
 @Controller
 public class GreetingController {
@@ -125,7 +126,7 @@ public class GreetingController {
 	
 	
 	@GetMapping("/videos")
-	public ResponseEntity<ClassPathResource>  getFullVideo(@RequestParam(name="name", required=false, defaultValue="2020-08-10 16.30.28.mp4") String name) {
+	public ResponseEntity<ClassPathResource>  getFullVideo(@RequestParam(name="name", required=false, defaultValue="missingPic.jpg") String name) {
         ClassPathResource video = new ClassPathResource(name);
 		System.out.println("videos: " + name);
 //		video = UrlResource("file:$videoLocation/$name");
@@ -154,6 +155,7 @@ public class GreetingController {
 		PictureInfoForm picInfoForm = new PictureInfoForm();
 		picInfoForm.setAllaIndex(new String[] { "One123", "Two", "Three" });
 		picInfoForm.setValdaIndex(new String[] { "Two", "Three" });
+		picInfoForm.setPictureName(pictureName);
 		
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("enTraff", enBild);
@@ -166,6 +168,15 @@ public class GreetingController {
 	public String uppdateraIndex(@ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
 		System.out.println(model);
 		System.out.println(picInfoForm);
+
+		Albums albums = new Albums();
+		Album album = albums.getAlbum(albumName);
+
+		Picture enBild = album.getPicture(picInfoForm.getPictureName());
+		
+		IndexHandler idxhanteraren = new IndexHandler(album);
+		idxhanteraren.updateIndexes(enBild, picInfoForm.getValdaIndex(), picInfoForm.getNewIndex());
+		
 
 		return sokAllaUtanIndex(albumName, model);
 	}
