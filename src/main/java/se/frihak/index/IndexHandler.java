@@ -17,11 +17,15 @@ public class IndexHandler {
 	}
 
 	public void updateIndexes(Picture enBild, String[] valdaIndex, String newIndex) throws IOException {
-		System.out.println("Dags att uppdatera index");
-		/*
-		 * Läs upp gamla index
-		 */
 		List<String> gamlaIndex = enBild.getIndexes();
+		List<String> indexesAfterChange = createListOfIndexes(valdaIndex, newIndex);
+		enBild.storeIndex(indexesAfterChange);
+		/*
+		 * ändra wordindex
+		 */
+	}
+
+	private List<String> createListOfIndexes(String[] valdaIndex, String newIndex) {
 		/*
 		 * skapa lista över nytt indexutseende
 		 */
@@ -33,13 +37,7 @@ public class IndexHandler {
 			}
 		}
 		indexesAfterChange.addAll(Arrays.asList(valdaIndex));
-		/*
-		 * skriv över pictureindex
-		 */
-		enBild.storeIndex(indexesAfterChange);
-		/*
-		 * ändra wordindex
-		 */
+		return indexesAfterChange;
 	}
 
 }
