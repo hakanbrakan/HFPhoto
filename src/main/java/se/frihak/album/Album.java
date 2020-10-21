@@ -140,4 +140,8 @@ public class Album {
 		return traff;
 	}
 
+	public File getWordIndexPath() {
+		return new File(file, "wordIndex");
+	}
+
 }
