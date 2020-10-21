@@ -10,7 +10,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+
+import org.apache.logging.log4j.util.SortedArrayStringMap;
 
 
 public class Album {
@@ -142,6 +146,21 @@ public class Album {
 
 	public File getWordIndexPath() {
 		return new File(file, "wordIndex");
+	}
+
+	public List<String> getAllIndexes() {
+		List<String> allaIndex = new ArrayList<>();
+
+		File[] allWordIndexes = getWordIndexPath().listFiles();
+		for (File oneWordFile : allWordIndexes) {
+			if (oneWordFile.isDirectory() && !oneWordFile.isHidden()) {
+				String indexname = oneWordFile.getName();
+				allaIndex.add(indexname);
+			}
+		}
+
+		Collections.sort(allaIndex);
+		return allaIndex;
 	}
 
 }

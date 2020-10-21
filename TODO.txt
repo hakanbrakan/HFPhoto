@@ -2,6 +2,7 @@
 Att göra
 ========
 2 söksida på index
+2.5 sök upp alla bilder
 3 på träffresultat visa bildens index
 4 på editsidan kunna byta gamla till nya index
 

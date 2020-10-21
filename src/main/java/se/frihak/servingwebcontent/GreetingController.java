@@ -3,6 +3,8 @@ package se.frihak.servingwebcontent;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.core.io.ClassPathResource;
@@ -111,9 +113,25 @@ public class GreetingController {
 
 	
 	@GetMapping("/album")
-	public String getAlbum(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("albumName", name);
+	public String getAlbum(@RequestParam(name="name", required=false, defaultValue="World") String albumName, Model model) {
+		Albums albums = new Albums();
+		Album album = albums.getAlbum(albumName);
 
+		List<String> allIndexes = album.getAllIndexes();
+
+		
+		PictureInfoForm picInfoForm = new PictureInfoForm();
+		picInfoForm.setAllaIndex(allIndexes.toArray(new String[] {}));
+		picInfoForm.setValdaIndex(new String[] {});
+		picInfoForm.setPictureName("test");
+		
+		model.addAttribute("picInfoForm", picInfoForm);
+
+		
+		
+
+		model.addAttribute("allaIndex", allIndexes);
+		model.addAttribute("albumName", albumName);
 		return "album";
 	}
 	
@@ -177,6 +195,25 @@ public class GreetingController {
 		IndexHandler idxhanteraren = new IndexHandler(album);
 		idxhanteraren.updateIndexes(enBild, picInfoForm.getValdaIndex(), picInfoForm.getNewIndex());
 		
+
+		return sokAllaUtanIndex(albumName, model);
+	}
+	
+	@PostMapping("/search")
+	public String search(@ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
+		System.out.println(model);
+		System.out.println(picInfoForm);
+		System.out.println(picInfoForm.getValdaIndex());
+
+		Albums albums = new Albums();
+		Album album = albums.getAlbum(albumName);
+
+/*		Picture enBild = album.getPicture(picInfoForm.getPictureName());
+		
+		
+		IndexHandler idxhanteraren = new IndexHandler(album);
+		idxhanteraren.updateIndexes(enBild, picInfoForm.getValdaIndex(), picInfoForm.getNewIndex());
+*/		
 
 		return sokAllaUtanIndex(albumName, model);
 	}
