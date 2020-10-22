@@ -6,13 +6,13 @@
 </head>
 <body>
 	<p>
-	<h2>Sökresultat</h2>
+	<h2>Album: <a th:href="@{/album?name=}+${albumName}"><span th:text="${albumName}"></span></a></h2>
 
 
 	<table>
     <thead>
         <tr>
-            <th> Album <span th:text="${albumName}"></span></th>
+            <th colspan="2">Sökresultat</th>
         </tr>
     </thead>
     <tbody>

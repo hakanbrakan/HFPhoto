@@ -146,8 +146,7 @@ public class GreetingController {
 	@GetMapping("/videos")
 	public ResponseEntity<ClassPathResource>  getFullVideo(@RequestParam(name="name", required=false, defaultValue="missingPic.jpg") String name) {
         ClassPathResource video = new ClassPathResource(name);
-		System.out.println("videos: " + name);
-//		video = UrlResource("file:$videoLocation/$name");
+
 		return ResponseEntity.status(HttpStatus.PARTIAL_CONTENT)
 				.contentType(MediaTypeFactory
 						.getMediaType(video)
