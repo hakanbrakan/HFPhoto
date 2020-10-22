@@ -208,13 +208,10 @@ public class GreetingController {
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
 
-/*		Picture enBild = album.getPicture(picInfoForm.getPictureName());
+		List<Picture> foundPictures = album.searchWithIndex(Arrays.asList(picInfoForm.getValdaIndex()));
 		
-		
-		IndexHandler idxhanteraren = new IndexHandler(album);
-		idxhanteraren.updateIndexes(enBild, picInfoForm.getValdaIndex(), picInfoForm.getNewIndex());
-*/		
-
-		return sokAllaUtanIndex(albumName, model);
+		model.addAttribute("albumName", albumName);
+		model.addAttribute("importedPictures", foundPictures);
+		return "searchResults";
 	}
 }

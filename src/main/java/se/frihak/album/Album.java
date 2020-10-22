@@ -163,4 +163,60 @@ public class Album {
 		return allaIndex;
 	}
 
+	public List<Picture> searchWithIndex(List<String> valdaIndex) {
+		List<String> idxAttKontrollera = new ArrayList<>(valdaIndex);
+		List<String> kandidater = new ArrayList<>();
+
+		if ( ! idxAttKontrollera.isEmpty()) {
+			String firstWordIndex = idxAttKontrollera.remove(0);
+			kandidater = getBilderForWordindex(firstWordIndex);
+			List<String> bildindexNamn = new ArrayList<>();
+			
+			for (String ettWordindex : idxAttKontrollera) {
+				bildindexNamn.clear();
+
+				for (String enKandidatbild : kandidater) {
+					Path path = Paths.get(getWordIndexPath().getPath(), ettWordindex, enKandidatbild);
+					if (path.toFile().exists()) {
+						bildindexNamn.add(enKandidatbild);
+					}
+				}
+				kandidater.clear();
+				kandidater.addAll(bildindexNamn);
+			}
+			
+		}
+		List<Picture> bildkandidater = getPictures(kandidater);
+		return bildkandidater;
+	}
+
+	private List<Picture> getPictures(List<String> kandidater) {
+		List<Picture> funnaBilder = new ArrayList<>();
+		
+		for (String enKand : kandidater) {
+			funnaBilder.add(getPicture(rensaindexnamn(enKand)));
+		}
+
+		return funnaBilder;
+	}
+
+	private String rensaindexnamn(String enKand) {
+		return enKand.replace(".hfidx", "");
+	}
+
+	private List<String> getBilderForWordindex(String wordIndex) {
+		List<String> kandidaterAttReturnera = new ArrayList<>();
+		File wordIndexFolder = new File(getWordIndexPath(), wordIndex);
+		
+		File[] allPictureCandidates = wordIndexFolder.listFiles();
+		for (File enKandidat : allPictureCandidates) {
+			if (enKandidat.isFile() && !enKandidat.isHidden()) {
+				String kandidatIndexNamn = enKandidat.getName();
+				kandidaterAttReturnera.add(kandidatIndexNamn);
+			}
+		}
+
+		return kandidaterAttReturnera;
+	}
+
 }
