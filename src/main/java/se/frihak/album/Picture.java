@@ -49,14 +49,14 @@ public class Picture {
 		
 	}
 	
-	public List<String> getIndexes() {
+	public List<String> getIndexes() throws IOException {
 		List<String> allaIndex = new ArrayList<String>();
 		File indexfile = getIndexfile();
 		
 		if (indexfile.exists()) {
-					//TODO läs upp alla index
-			allaIndex.add("Ett");
-			allaIndex.add("Tre");
+			List<String> lines = Files.readAllLines(Paths.get(indexfile.toString()));
+
+			allaIndex.addAll(lines);
 		}
 		return allaIndex;
 	}
