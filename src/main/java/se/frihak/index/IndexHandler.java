@@ -71,7 +71,17 @@ public class IndexHandler {
 			Files.write(path, Arrays.asList("hej"), StandardCharsets.UTF_8);
 		}
 		
-		//TODO Ta bort index som inte används mer
+		//Ta bort index som inte används mer
+		for (String idx : indexesToRemove) {
+			Path path = Paths.get(album.getWordIndexPath().toPath().toString(), idx, enBild.getPictureName()+".hfidx");
+			
+			Files.deleteIfExists(path);
+			Path parentDir = path.getParent();
+			if (parentDir.toFile().listFiles().length <= 0) {
+				Files.deleteIfExists(parentDir);
+			}
+
+		}
 		
 	}
 }

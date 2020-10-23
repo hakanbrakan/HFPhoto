@@ -164,14 +164,14 @@ public class GreetingController {
 	}
 	
 	@GetMapping(value = "/editIndexes")
-	public String editIndexes(@RequestParam(value="albumName", required=true) String albumName, @RequestParam(value="pictureName", required=true) String pictureName, Model model) {
+	public String editIndexes(@RequestParam(value="albumName", required=true) String albumName, @RequestParam(value="pictureName", required=true) String pictureName, Model model) throws IOException {
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
 
 		Picture enBild = album.getPicture(pictureName);
 		PictureInfoForm picInfoForm = new PictureInfoForm();
-		picInfoForm.setAllaIndex(new String[] { "One123", "Two", "Three" });
-		picInfoForm.setValdaIndex(new String[] { "Two", "Three" });
+		picInfoForm.setAllaIndex(album.getAllIndexes().toArray(new String[] {}));
+		picInfoForm.setValdaIndex(enBild.getIndexes().toArray(new String[] {}));
 		picInfoForm.setPictureName(pictureName);
 		
 		model.addAttribute("albumName", albumName);
