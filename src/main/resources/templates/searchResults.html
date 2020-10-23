@@ -3,13 +3,45 @@
 <head> 
     <title>HFPhoto</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<style>
+table {
+  border-collapse: collapse;
+  border: 0px solid black;
+} 
+
+th,td {
+  border: 0px solid black;
+}
+
+table.a {
+  table-layout: auto;
+  width: 180px;  
+}
+
+table.b {
+  table-layout: fixed;
+  width: 180px;  
+}
+
+table.c {
+  table-layout: auto;
+  width: 100%;  
+}
+
+table.d {
+  table-layout: fixed;
+  width: 100%;  
+}
+</style>
+
 </head>
 <body>
 	<p>
 	<h2>Album: <a th:href="@{/album?name=}+${albumName}"><span th:text="${albumName}"></span></a></h2>
 
 
-	<table>
+	<table  class="c">
     <thead>
         <tr>
             <th colspan="2">Sökresultat</th>
@@ -22,7 +54,7 @@
         <tr th:each="enTraff : ${importedPictures}">
             <td>
 				<div th:each="ettIndex : ${enTraff.indexes}">
-					<label th:text="${ettIndex}">Index saknas</label>
+					<h3><label th:text="${ettIndex}">Index saknas</label></h3>
 				</div>
                <!-- 
                <span th:text="${enTraff.picturePath}"></span>

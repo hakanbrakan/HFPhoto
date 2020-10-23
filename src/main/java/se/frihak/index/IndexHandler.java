@@ -39,8 +39,16 @@ public class IndexHandler {
 				indexesAfterChange.add(string);
 			}
 		}
-		indexesAfterChange.addAll(Arrays.asList(valdaIndex));
+		indexesAfterChange.addAll(toArray(valdaIndex));
 		return indexesAfterChange;
+	}
+
+	private List<String> toArray(String[] valdaIndex) {
+		if (valdaIndex == null) {
+			return new ArrayList<String>();
+		} else {
+			return Arrays.asList(valdaIndex);
+		}
 	}
 
 	private void storeWordindex(Picture enBild, List<String> gamlaIndex, List<String> indexesAfterChange) throws IOException {

@@ -3,6 +3,38 @@
 <head> 
     <title>HFPhoto</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<style>
+table {
+  border-collapse: collapse;
+  border: 0px solid black;
+} 
+
+th,td {
+  border: 0px solid black;
+}
+
+table.a {
+  table-layout: auto;
+  width: 180px;  
+}
+
+table.b {
+  table-layout: fixed;
+  width: 180px;  
+}
+
+table.c {
+  table-layout: auto;
+  width: 100%;  
+}
+
+table.d {
+  table-layout: fixed;
+  width: 100%;  
+}
+</style>
+
 </head>
 <body>
 	<p>
@@ -10,7 +42,7 @@
 	<p>Editera Index</p>
 
 
-	<table>
+	<table  class="a">
     <thead>
         <tr>
             <th colspan="2"> Album <span th:text="${albumName}"></span>,  Bild:<span th:text="${enTraff.pictureName}"></span></th>

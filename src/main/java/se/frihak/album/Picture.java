@@ -8,8 +8,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.frihak.index.Filehandler;
-
 public class Picture {
 	private Path picturePath;
 	private boolean isPicture;
@@ -45,7 +43,11 @@ public class Picture {
 		File indexfile = getIndexfile();
 		//List<String> indexesBeforeChange = filehandler.getContentAsList(album.getPictureIndexPath(), enBild.getPictureName()+".hfidx");
 		
-		Files.write(indexfile.toPath(), indexesToStore);
+		if (indexesToStore.isEmpty()) {
+			Files.delete(indexfile.toPath());
+		} else {
+			Files.write(indexfile.toPath(), indexesToStore);
+		}
 		
 	}
 	
