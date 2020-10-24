@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Picture {
@@ -60,6 +61,7 @@ public class Picture {
 
 			allaIndex.addAll(lines);
 		}
+		Collections.sort(allaIndex);
 		return allaIndex;
 	}
 

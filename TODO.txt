@@ -1,10 +1,11 @@
 
 Att göra
 ========
-2.5 sök upp alla bilder
-4 på editsidan kunna byta gamla till nya index
+Efter edit gå tillbaka till rätt sökresultatsida
 
-Splitta nya index funkar inte
+192.168.1.6
+
+Nullpointer när man klickar på sök och index saknas - sökknappen borde inte visas då
 
 Hantera om albumrootpath saknas - idag kastas undantag
 
@@ -15,6 +16,10 @@ Testa ha flera controllers
 Ändra namn på exempelpaket
 
 Bryt ut hårdkodad albumrootpath
+	tex ha några path i prio som testas och om någon finns så är det den vi kör på
+	/Volumes/HAKANBUP/.........
+	/Volumes/IngersBackup/.......
+	/testforutveckling............
 
 Shutdown på indexsidan
 stänga av applikationen https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
@@ -32,7 +37,14 @@ http://dolszewski.com/spring/spring-boot-application-properties-file/
 
 KLART
 =====
+2020-10-24
+Splitta nya index funkar inte - Jo nu
+
+På searchresult sortera index som visas
+
 2020-10-23
+På editsidan kunna byta gamla till nya index
+
 På träffresultat visa bildens index
 
 2020-10-22
