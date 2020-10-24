@@ -65,11 +65,9 @@ table.d {
             	   <!-- <a th:href="@{/album?name=}+${ettAlbum.Namn}"><span th:text="${ettAlbum.Namn}"></span></a>  -->
             	</td>
             <td th:if="${enTraff.isPicture}">
-               <span>bild</span>
                <img th:src="@{/picture?albumName=}+${albumName}+@{&pictureName=}+${enTraff.pictureName}" width="80%">
             	</td>
             <td th:unless="${enTraff.isPicture}">
-               <span>film</span>
 				<video width="auto" height="600" controls style=" margin-left: auto; margin-right: auto; display: block;">
 				    <source th:src="@{/video(albumName=${albumName},id=${enTraff.pictureName})}" type="video/mp4">
 				</video>
