@@ -32,7 +32,7 @@ public class IndexHandler {
 		/*
 		 * skapa lista över nytt indexutseende
 		 */
-		List<String> alla = Arrays.asList(newIndex.split("\\s*,\\s*"));
+		List<String> alla = Arrays.asList(newIndex.split("[\\s,:;]+"));
 		List<String> indexesAfterChange = new ArrayList<>();
 		for (String string : alla) {
 			if ( ! string.isEmpty()) {
