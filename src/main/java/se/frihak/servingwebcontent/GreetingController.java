@@ -135,14 +135,6 @@ public class GreetingController {
 		return "album";
 	}
 	
-	@GetMapping("/film")
-	public String film(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("name", name);
-		System.out.println("film: " + name);
-		return "film";
-	}
-	
-	
 	@GetMapping("/videos")
 	public ResponseEntity<ClassPathResource>  getFullVideo(@RequestParam(name="name", required=false, defaultValue="missingPic.jpg") String name) {
         ClassPathResource video = new ClassPathResource(name);
