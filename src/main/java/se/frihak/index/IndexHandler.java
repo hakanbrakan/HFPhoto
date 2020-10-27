@@ -52,7 +52,6 @@ public class IndexHandler {
 	}
 
 	private void storeWordindex(Picture enBild, List<String> gamlaIndex, List<String> indexesAfterChange) throws IOException {
-		System.out.println("storeWordindex");
 		File wordIdxPath = album.getWordIndexPath();
 		
 		List<String> indexesToRemove = new ArrayList<>(gamlaIndex);

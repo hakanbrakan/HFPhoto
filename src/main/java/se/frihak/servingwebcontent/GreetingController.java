@@ -42,14 +42,13 @@ public class GreetingController {
 
 	@GetMapping("/")
 	public String startpage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("name", name);
 		LocalDateTime idag = LocalDateTime.now();
-		model.addAttribute("serverTime", idag.toString());
-		System.out.println("i startsidan");
 		Albums albums = new Albums();
 		List<Album> minaAlbum = albums.getAlbumlist();
+
+		model.addAttribute("name", name);
+		model.addAttribute("serverTime", idag.toString());
 		model.addAttribute("album", minaAlbum);
-		System.out.println(model);
 		return "index";
 	}
 
@@ -175,9 +174,6 @@ public class GreetingController {
 	
 	@PostMapping("/updateIndexes")
 	public String uppdateraIndex(@ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
-		System.out.println(model);
-		System.out.println(picInfoForm);
-
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
 
@@ -192,10 +188,6 @@ public class GreetingController {
 	
 	@PostMapping("/search")
 	public String search(@ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
-		System.out.println(model);
-		System.out.println(picInfoForm);
-		System.out.println(picInfoForm.getValdaIndex());
-
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
 
