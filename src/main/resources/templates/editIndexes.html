@@ -16,7 +16,7 @@ th,td {
 
 table.a {
   table-layout: auto;
-  width: 180px;  
+  width: 100%;  
 }
 
 table.b {
@@ -32,6 +32,10 @@ table.c {
 table.d {
   table-layout: fixed;
   width: 100%;  
+}
+
+img {
+  width: 80%;  
 }
 </style>
 
@@ -68,7 +72,7 @@ table.d {
 				</form>
             	</td>
             <td th:if="${enTraff.isPicture}">
-               <img th:src="@{/picture?albumName=}+${albumName}+@{&pictureName=}+${enTraff.pictureName}" width="80%">
+               <img th:src="@{/picture?albumName=}+${albumName}+@{&pictureName=}+${enTraff.pictureName}">
             	</td>
             <td th:unless="${enTraff.isPicture}">
 				<video width="auto" height="600" controls style=" margin-left: auto; margin-right: auto; display: block;">
