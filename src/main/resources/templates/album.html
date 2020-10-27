@@ -18,7 +18,7 @@ Album: <span th:text="${albumName}"></span>
 			            <label th:for="${#ids.prev('valdaIndex')}"  th:text="${ettIndex}">Index saknas</label>
 			        </div>
             	   
-					<div class="col-md-6 form-group">
+					<div th:if="*{allaIndex.length > 0}" class="col-md-6 form-group">
             			<input type="submit" value="Sök">
             			</div>
 				</form>
