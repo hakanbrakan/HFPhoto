@@ -32,14 +32,6 @@ import se.frihak.index.IndexHandler;
 @Controller
 public class GreetingController {
 
-	@GetMapping("/greeting")
-	public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("name", name);
-		LocalDateTime idag = LocalDateTime.now();
-		model.addAttribute("serverTime", idag.toString());
-		return "greeting";
-	}
-
 	@GetMapping("/")
 	public String startpage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		LocalDateTime idag = LocalDateTime.now();
