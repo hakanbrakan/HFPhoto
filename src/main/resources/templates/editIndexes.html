@@ -14,6 +14,10 @@ th,td {
   border: 0px solid black;
 }
 
+td.left {
+  vertical-align: top;
+}
+
 table.a {
   table-layout: auto;
   width: 100%;  
@@ -54,7 +58,7 @@ img {
     </thead>
     <tbody>
         <tr>
-            <td>
+            <td  class="left">
             	   <form th:action="@{/updateIndexes}" th:object="${picInfoForm}" method="post">
 					<input type="hidden" id="albumName" name="albumName" th:value="${albumName}"></input>
 					<input type="hidden" id="pictureName" name="pictureName" th:value="*{pictureName}"></input>
@@ -64,6 +68,7 @@ img {
 			            <label th:for="${#ids.prev('valdaIndex')}"  th:text="${ettIndex}">Index saknas</label>
 			        </div>
             	   
+            	   		<p>
 					<div class="col-md-6 form-group">
             			<label for="newIndex">Nya index:</label>
             			<input type="text" name="newIndex" class="form-control" th:field="*{newIndex}">
