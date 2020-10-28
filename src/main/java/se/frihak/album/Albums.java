@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Albums {
@@ -34,6 +35,7 @@ public class Albums {
 				lista.add(new Album(file));
 			}
 		}
+		Collections.sort(lista, new SortByName());
 
 		return lista;
 	}
