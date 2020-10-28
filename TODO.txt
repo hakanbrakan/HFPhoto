@@ -37,6 +37,9 @@ http://dolszewski.com/spring/spring-boot-application-properties-file/
 
 KLART
 =====
+2020-10-28
+Sorterar album på förstasidan
+
 2020-10-27
 Nullpointer när man klickar på sök och index saknas - sökknappen borde inte visas då
 

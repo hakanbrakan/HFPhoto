@@ -14,9 +14,13 @@ th,td {
   border: 0px solid black;
 }
 
+td.left {
+  vertical-align: top;
+}
+
 table.a {
   table-layout: auto;
-  width: 180px;  
+  width: 100%;  
 }
 
 table.b {
@@ -32,6 +36,10 @@ table.c {
 table.d {
   table-layout: fixed;
   width: 100%;  
+}
+
+img {
+  width: 80%;  
 }
 </style>
 
@@ -52,20 +60,21 @@ table.d {
             <td colspan="2"> Hittade inga bilder </td>
         </tr>
         <tr th:each="enTraff : ${importedPictures}">
-            <td>
+            <td  class="left">
 				<div th:each="ettIndex : ${enTraff.indexes}">
-					<h3><label th:text="${ettIndex}">Index saknas</label></h3>
+					<label th:text="${ettIndex}">Index saknas</label>
 				</div>
                <!-- 
                <span th:text="${enTraff.picturePath}"></span>
                <span th:text="${enTraff.isPicture}"></span>
                 -->
+                <p>
                 <a th:href="@{/editIndexes(albumName=${albumName},pictureName=${enTraff.pictureName})}"><span>Edit</span></a>
                
             	   <!-- <a th:href="@{/album?name=}+${ettAlbum.Namn}"><span th:text="${ettAlbum.Namn}"></span></a>  -->
             	</td>
             <td th:if="${enTraff.isPicture}">
-               <img th:src="@{/picture?albumName=}+${albumName}+@{&pictureName=}+${enTraff.pictureName}" width="80%">
+               <img th:src="@{/picture?albumName=}+${albumName}+@{&pictureName=}+${enTraff.pictureName}">
             	</td>
             <td th:unless="${enTraff.isPicture}">
 				<video width="auto" height="600" controls style=" margin-left: auto; margin-right: auto; display: block;">
