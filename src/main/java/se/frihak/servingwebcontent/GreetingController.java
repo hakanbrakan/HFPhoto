@@ -3,7 +3,6 @@ package se.frihak.servingwebcontent;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -156,8 +155,6 @@ public class GreetingController {
 	public String editIndexes(HttpSession session, @RequestParam(value="albumName", required=true) String albumName, @RequestParam(value="pictureName", required=true) String pictureName, Model model) throws IOException {
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
-
-		String varde = (String) session.getAttribute("nyckel");
 
 		Picture enBild = album.getPicture(pictureName);
 		PictureInfoForm picInfoForm = new PictureInfoForm();
