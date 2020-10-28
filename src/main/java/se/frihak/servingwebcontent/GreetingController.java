@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
@@ -54,7 +56,7 @@ public class GreetingController {
 	}
 
 	@GetMapping("/import")
-	public String importera(@RequestParam(name="fileToUpload", required=false, defaultValue="defaultFileToUpload") File name, @RequestParam(name="albumName", defaultValue="hittasInte") String albumName, Model model) throws IOException {
+	public String importera(HttpSession session, @RequestParam(name="fileToUpload", required=false, defaultValue="defaultFileToUpload") File name, @RequestParam(name="albumName", defaultValue="hittasInte") String albumName, Model model) throws IOException {
 		String pathToPicturesToImport = "/Users/inger/Downloads/Camera Uploads/";
 		System.out.println(pathToPicturesToImport);
 		
@@ -63,6 +65,8 @@ public class GreetingController {
 		Album album = albums.getAlbum(albumName);
 		List<Picture> importedPictures = album.importPicturesFrom(pathToPicturesToImport);
 		
+		session.setAttribute("foundPictures", importedPictures);
+
 		//redirect till sökresultat med sökta bilder som saknar attribut
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("importedPictures", importedPictures);
@@ -70,11 +74,13 @@ public class GreetingController {
 	}
 
 	@GetMapping("/searchAllWithoutIndex")
-	public String sokAllaUtanIndex(@RequestParam(name="albumName", defaultValue="hittasInte") String albumName, Model model) throws IOException {
+	public String sokAllaUtanIndex(HttpSession session, @RequestParam(name="albumName", defaultValue="hittasInte") String albumName, Model model) throws IOException {
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
 		List<Picture> foundPictures = album.searchAllWithoutIndex();
 		
+		session.setAttribute("foundPictures", foundPictures);
+
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("importedPictures", foundPictures);
 		return "searchResults";
@@ -147,9 +153,11 @@ public class GreetingController {
 	}
 	
 	@GetMapping(value = "/editIndexes")
-	public String editIndexes(@RequestParam(value="albumName", required=true) String albumName, @RequestParam(value="pictureName", required=true) String pictureName, Model model) throws IOException {
+	public String editIndexes(HttpSession session, @RequestParam(value="albumName", required=true) String albumName, @RequestParam(value="pictureName", required=true) String pictureName, Model model) throws IOException {
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
+
+		String varde = (String) session.getAttribute("nyckel");
 
 		Picture enBild = album.getPicture(pictureName);
 		PictureInfoForm picInfoForm = new PictureInfoForm();
@@ -165,25 +173,30 @@ public class GreetingController {
 	}
 	
 	@PostMapping("/updateIndexes")
-	public String uppdateraIndex(@ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
+	public String uppdateraIndex(HttpSession session, @ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
+		
+		@SuppressWarnings("unchecked") List<Picture> foundPictures = (List<Picture>) session.getAttribute("foundPictures");
 
 		Picture enBild = album.getPicture(picInfoForm.getPictureName());
 		
 		IndexHandler idxhanteraren = new IndexHandler(album);
 		idxhanteraren.updateIndexes(enBild, picInfoForm.getValdaIndex(), picInfoForm.getNewIndex());
 		
-
-		return sokAllaUtanIndex(albumName, model);
+		model.addAttribute("albumName", albumName);
+		model.addAttribute("importedPictures", foundPictures);
+		return "searchResults";
 	}
 	
 	@PostMapping("/search")
-	public String search(@ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
+	public String search(HttpSession session, @ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
 
 		List<Picture> foundPictures = album.searchWithIndex(Arrays.asList(picInfoForm.getValdaIndex()));
+		
+		session.setAttribute("foundPictures", foundPictures);
 		
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("importedPictures", foundPictures);
