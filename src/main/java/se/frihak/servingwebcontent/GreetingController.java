@@ -35,12 +35,15 @@ import se.frihak.index.IndexHandler;
 
 @Controller
 public class GreetingController {
-	@Value("${pathToAlbums}") private String pathToAlbums;
+	private Albums albums;
 	
+	public GreetingController(@Value("${pathToAlbums}") String pathToAlbums) {
+		albums = new Albums(getFirstExistingPath(pathToAlbums));
+	}
+
 	@GetMapping("/")
 	public String startpage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 		LocalDateTime idag = LocalDateTime.now();
-		Albums albums = new Albums(getFirstExistingPath(pathToAlbums));
 		List<Album> minaAlbum = albums.getAlbumlist();
 
 		model.addAttribute("name", name);
@@ -53,7 +56,6 @@ public class GreetingController {
 	public String newAlbum(@RequestParam(name="albumname", required=false, defaultValue="World") String name, Model model) {
 		model.addAttribute("albumName", name);
 		System.out.println(model);
-		Albums albums = new Albums(getFirstExistingPath(pathToAlbums));
 		albums.createNewAlbumWithName(name);
 		return "redirect:/";
 	}
@@ -64,7 +66,6 @@ public class GreetingController {
 		System.out.println(pathToPicturesToImport);
 		
 		//flytta bilder till rätt album
-		Albums albums = new Albums(getFirstExistingPath(pathToAlbums));
 		Album album = albums.getAlbum(albumName);
 		List<Picture> importedPictures = album.importPicturesFrom(pathToPicturesToImport);
 		
@@ -78,7 +79,6 @@ public class GreetingController {
 
 	@GetMapping("/searchAllWithoutIndex")
 	public String sokAllaUtanIndex(HttpSession session, @RequestParam(name="albumName", defaultValue="hittasInte") String albumName, Model model) throws IOException {
-		Albums albums = new Albums(getFirstExistingPath(pathToAlbums));
 		Album album = albums.getAlbum(albumName);
 		List<Picture> foundPictures = album.searchAllWithoutIndex();
 		Collections.sort(foundPictures, new SortPicturesByName());
@@ -100,8 +100,6 @@ public class GreetingController {
 	
     @RequestMapping(value = "/picture", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<byte[]> getPicture(@RequestParam(name="albumName") String albumName, @RequestParam(name="pictureName") String pictureName) throws IOException {
-
-		Albums albums = new Albums(getFirstExistingPath(pathToAlbums));
 		Album album = albums.getAlbum(albumName);
 
         byte[] bytes = StreamUtils.copyToByteArray(album.getFileInputStream(pictureName));
@@ -115,7 +113,6 @@ public class GreetingController {
 	
 	@GetMapping("/album")
 	public String getAlbum(@RequestParam(name="name", required=false, defaultValue="World") String albumName, Model model) {
-		Albums albums = new Albums(getFirstExistingPath(pathToAlbums));
 		Album album = albums.getAlbum(albumName);
 
 		List<String> allIndexes = album.getAllIndexes();
@@ -150,7 +147,6 @@ public class GreetingController {
 	@GetMapping(value = "/video", produces = "video/mp4")
 	@ResponseBody
 	public FileSystemResource videoSource(@RequestParam(value="albumName", required=true) String albumName, @RequestParam(value="id", required=true) String id) {
-		Albums albums = new Albums(getFirstExistingPath(pathToAlbums));
 		Album album = albums.getAlbum(albumName);
 
 		return new FileSystemResource(album.getFile(id));
@@ -158,7 +154,6 @@ public class GreetingController {
 	
 	@GetMapping(value = "/editIndexes")
 	public String editIndexes(HttpSession session, @RequestParam(value="albumName", required=true) String albumName, @RequestParam(value="pictureName", required=true) String pictureName, Model model) throws IOException {
-		Albums albums = new Albums(getFirstExistingPath(pathToAlbums));
 		Album album = albums.getAlbum(albumName);
 
 		Picture enBild = album.getPicture(pictureName);
@@ -176,7 +171,6 @@ public class GreetingController {
 	
 	@PostMapping("/updateIndexes")
 	public String uppdateraIndex(HttpSession session, @ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
-		Albums albums = new Albums(getFirstExistingPath(pathToAlbums));
 		Album album = albums.getAlbum(albumName);
 		
 		@SuppressWarnings("unchecked") List<Picture> foundPictures = (List<Picture>) session.getAttribute("foundPictures");
@@ -193,7 +187,6 @@ public class GreetingController {
 	
 	@PostMapping("/search")
 	public String search(HttpSession session, @ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
-		Albums albums = new Albums(getFirstExistingPath(pathToAlbums));
 		Album album = albums.getAlbum(albumName);
 
 		List<Picture> foundPictures = album.searchWithIndex(Arrays.asList(picInfoForm.getValdaIndex()));
