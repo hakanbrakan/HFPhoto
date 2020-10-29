@@ -10,9 +10,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class Albums {
+	private String pathToAlbums;
+
+	public Albums(String pathToAlbums) {
+		this.pathToAlbums = pathToAlbums;
+	}
 
 	public void createNewAlbumWithName(String albumname) {
-		Path path = Paths.get("/Users/inger/Documents/MinaAlbum", albumname);
+		Path path = Paths.get(pathToAlbums, albumname);
 		
 		try {
 			Files.createDirectories(path);
@@ -27,7 +32,7 @@ public class Albums {
 
 	public List<Album> getAlbumlist() {
 		List<Album> lista = new ArrayList<Album>();
-		Path path = Paths.get("/Users/inger/Documents/MinaAlbum");
+		Path path = Paths.get(pathToAlbums);
 		File folder = path.toFile();
 		File[] filer = folder.listFiles();
 		for (File file : filer) {
