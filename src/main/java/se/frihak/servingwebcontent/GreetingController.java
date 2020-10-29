@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -77,6 +78,7 @@ public class GreetingController {
 		Albums albums = new Albums();
 		Album album = albums.getAlbum(albumName);
 		List<Picture> foundPictures = album.searchAllWithoutIndex();
+		Collections.sort(foundPictures, new SortPicturesByName());
 		
 		session.setAttribute("foundPictures", foundPictures);
 
