@@ -190,6 +190,7 @@ public class GreetingController {
 		Album album = albums.getAlbum(albumName);
 
 		List<Picture> foundPictures = album.searchWithIndex(Arrays.asList(picInfoForm.getValdaIndex()));
+		Collections.sort(foundPictures, new SortPicturesByName());
 		
 		session.setAttribute("foundPictures", foundPictures);
 		
