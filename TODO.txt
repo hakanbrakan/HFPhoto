@@ -1,8 +1,21 @@
 
 Att göra
 ========
+Version 1.0.0
+-------------
+Max n st bilder läses upp åt gången vid sökning tex alla utan index ev. mfl
 Datum på bilden
-Datum sökbart
+	Datum sökbart
+Delete av bild och dess index
+Shutdown på indexsidan
+	stänga av applikationen https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
+	     https://www.baeldung.com/spring-boot-shutdown
+	     https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
+	     https://www.baeldung.com/spring-boot-web-server-shutdown
+
+
+Senare
+------
 https://www.w3schools.com/css/css3_object-fit.asp
 
 192.168.1.6
@@ -15,31 +28,28 @@ Testa ha flera controllers
 
 Ändra namn på exempelpaket
 
+
+     
+
+KLART
+=====
+2020-11-01
+Stänga album
+Funkar - application.properties ska funka utanför Eclipse
+
+2020-10-29
+Fixar problem med sökväg till cookies vid startup
+Sorterar träfflista vid sökning bilder med och utan index
 Bryt ut hårdkodad albumrootpath
 	tex ha några path i prio som testas och om någon finns så är det den vi kör på
 	/Volumes/HAKANBUP/.........
 	/Volumes/IngersBackup/.......
 	/testforutveckling............
-
-Shutdown på indexsidan
-stänga av applikationen https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
-     https://www.baeldung.com/spring-boot-shutdown
-     https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
-     https://www.baeldung.com/spring-boot-web-server-shutdown
-     
-     
 application.properties
 https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-external-config.html
 https://stackoverflow.com/questions/38775194/where-is-the-application-properties-file-in-a-spring-boot-project
 https://www.baeldung.com/spring-properties-file-outside-jar
 http://dolszewski.com/spring/spring-boot-application-properties-file/
-
-
-KLART
-=====
-2020-10-29
-Fixar problem med sökväg till cookies vid startup
-Sorterar träfflista vid sökning bilder utan index
 
 2020-10-28
 Sorterar album på förstasidan
