@@ -7,15 +7,11 @@ Max n st bilder läses upp åt gången vid sökning tex alla utan index ev. mfl
 Datum på bilden
 	Datum sökbart
 Delete av bild och dess index
-Shutdown på indexsidan
-	stänga av applikationen https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
-	     https://www.baeldung.com/spring-boot-shutdown
-	     https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
-	     https://www.baeldung.com/spring-boot-web-server-shutdown
 
 
 Senare
 ------
+Shutdown borde kanske implementera Postmapping istf get som egentligen inte rekommenderas
 https://www.w3schools.com/css/css3_object-fit.asp
 
 192.168.1.6
@@ -34,6 +30,11 @@ Testa ha flera controllers
 KLART
 =====
 2020-11-01
+Shutdown på indexsidan
+	stänga av applikationen https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
+	     https://www.baeldung.com/spring-boot-shutdown
+	     https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
+	     https://www.baeldung.com/spring-boot-web-server-shutdown
 Stänga album
 Funkar - application.properties ska funka utanför Eclipse
 
