@@ -3,15 +3,18 @@ Att göra
 ========
 Version 1.0.0
 -------------
-Max n st bilder läses upp åt gången vid sökning tex alla utan index ev. mfl
+Delete av bild och dess index
+Max n st bilder läses upp åt gången vid sökning alla utan index
 Datum på bilden
 	Datum sökbart
-Delete av bild och dess index
 
 
 Senare
 ------
+Max n st bilder läses upp åt gången vid sökning. Fundera på om det behövs
+
 Shutdown borde kanske implementera Postmapping istf get som egentligen inte rekommenderas
+classen är restcontroller men den andra är controller
 https://www.w3schools.com/css/css3_object-fit.asp
 
 192.168.1.6
@@ -29,6 +32,9 @@ Testa ha flera controllers
 
 KLART
 =====
+2020-11-02
+Radera filmer och bilder från resources
+
 2020-11-01
 Shutdown på indexsidan
 	stänga av applikationen https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
