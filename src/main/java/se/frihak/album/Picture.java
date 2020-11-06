@@ -72,4 +72,13 @@ public class Picture {
 		return indexfile;
 	}
 
+	public void remove() throws IOException {
+		Files.deleteIfExists(getPicturePath());
+	}
+
+	@Override
+	public String toString() {
+		return "Picture [picturePath=" + picturePath + "]";
+	}
+
 }

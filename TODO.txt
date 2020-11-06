@@ -3,7 +3,6 @@ Att göra
 ========
 Version 1.0.0
 -------------
-Delete av bild och dess index
 Max n st bilder läses upp åt gången vid sökning alla utan index
 Datum på bilden
 	Datum sökbart
@@ -11,6 +10,8 @@ Datum på bilden
 
 Senare
 ------
+Delete av bild funkar inte riktigt, ibland försöker den läsa upp en borttagen bild - jättekonstigt
+
 Max n st bilder läses upp åt gången vid sökning. Fundera på om det behövs
 
 Shutdown borde kanske implementera Postmapping istf get som egentligen inte rekommenderas
@@ -32,6 +33,9 @@ Testa ha flera controllers
 
 KLART
 =====
+2020-11-06
+Delete av bild och dess index
+
 2020-11-02
 Radera filmer och bilder från resources
 

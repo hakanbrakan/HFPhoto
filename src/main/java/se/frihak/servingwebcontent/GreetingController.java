@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -207,5 +208,32 @@ public class GreetingController {
 			}
 		}
 		return null;
+	}
+	
+	@GetMapping(value = "/deletePicture")
+	public String deletePicture(HttpSession session, @RequestParam(value="albumName", required=true) String albumName, @RequestParam(value="pictureName", required=true) String pictureName, Model model) throws IOException {
+		Album album = albums.getAlbum(albumName);
+		Picture enBild = album.getPicture(pictureName);
+
+		@SuppressWarnings("unchecked") List<Picture> foundPictures = (List<Picture>) session.getAttribute("foundPictures");
+		removePictureFromList(foundPictures, enBild);
+		List<Picture> showPictures = new ArrayList<>(foundPictures);
+		session.setAttribute("foundPictures", showPictures);
+		enBild.remove();
+
+		model.addAttribute("albumName", albumName);
+		model.addAttribute("importedPictures", showPictures);
+		return "searchResults";
+	}
+
+	private void removePictureFromList(List<Picture> foundPictures, Picture enBild) {
+		List<Picture> tempList = new ArrayList<>(foundPictures);
+		
+		for (Picture picture : tempList) {
+			if (picture.getPicturePath().equals(enBild.getPicturePath())) {
+				foundPictures.remove(picture);
+			}
+		}
+		
 	}
 }

@@ -59,7 +59,7 @@ img {
 	    <tr th:if="${importedPictures.empty}">
             <td colspan="2"> Hittade inga bilder </td>
         </tr>
-        <tr th:each="enTraff : ${importedPictures}">
+        <tr th:unless="${importedPictures.empty}" th:each="enTraff : ${importedPictures}">
             <td  class="left">
 				<div th:each="ettIndex : ${enTraff.indexes}">
 					<label th:text="${ettIndex}">Index saknas</label>
@@ -72,6 +72,10 @@ img {
                 <a th:href="@{/editIndexes(albumName=${albumName},pictureName=${enTraff.pictureName})}"><span>Edit</span></a>
                
             	   <!-- <a th:href="@{/album?name=}+${ettAlbum.Namn}"><span th:text="${ettAlbum.Namn}"></span></a>  -->
+				<div th:if="${enTraff.indexes.empty}">
+					<p>
+                <a th:href="@{/deletePicture(albumName=${albumName},pictureName=${enTraff.pictureName})}"><span>Delete</span></a>
+				</div>
             	</td>
             <td th:if="${enTraff.isPicture}">
                <img th:src="@{/picture?albumName=}+${albumName}+@{&pictureName=}+${enTraff.pictureName}">

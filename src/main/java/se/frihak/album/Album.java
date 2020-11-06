@@ -92,8 +92,15 @@ public class Album {
 	public InputStream getFileInputStream(String pictureName) throws FileNotFoundException {
 		File picFolder = getPictureFolder();
 		Path newPath = Paths.get(picFolder.toPath().toString(), pictureName);
-		FileInputStream stream = new FileInputStream(newPath.toString());
-		// TODO Auto-generated method stub
+		FileInputStream stream;
+		try {
+			stream = new FileInputStream(newPath.toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
 		return stream;
 	}
 
