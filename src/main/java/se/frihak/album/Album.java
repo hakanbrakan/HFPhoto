@@ -10,15 +10,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.logging.log4j.util.SortedArrayStringMap;
-
 
 public class Album {
-
+	private static final int NUM_PICTURES_SEARCH_RESULT = 10;
 	final private File file;
 
 	public Album(File file) {
@@ -123,6 +120,10 @@ public class Album {
 				if ( ! exists) {
 					Picture traff = Picture.getInstance(onePic.toPath(), isPicture(onePic.toPath()));
 					list.add(traff);
+				}
+				
+				if (list.size() >= NUM_PICTURES_SEARCH_RESULT) {
+					break;
 				}
 			}
 		}

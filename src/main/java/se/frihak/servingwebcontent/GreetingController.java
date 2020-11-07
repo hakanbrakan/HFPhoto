@@ -84,6 +84,7 @@ public class GreetingController {
 		List<Picture> foundPictures = album.searchAllWithoutIndex();
 		Collections.sort(foundPictures, new SortPicturesByName());
 		
+		session.removeAttribute("foundPictures");
 		session.setAttribute("foundPictures", foundPictures);
 
 		model.addAttribute("albumName", albumName);

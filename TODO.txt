@@ -3,7 +3,6 @@ Att göra
 ========
 Version 1.0.0
 -------------
-Max n st bilder läses upp åt gången vid sökning alla utan index
 Datum på bilden
 	Datum sökbart
 
@@ -12,7 +11,7 @@ Senare
 ------
 Delete av bild funkar inte riktigt, ibland försöker den läsa upp en borttagen bild - jättekonstigt
 
-Max n st bilder läses upp åt gången vid sökning. Fundera på om det behövs
+Max n st bilder läses upp åt gången vid sökning. Fundera på om det behövs, tror det, men ta från properties - idag är det hårdkodat
 
 Shutdown borde kanske implementera Postmapping istf get som egentligen inte rekommenderas
 classen är restcontroller men den andra är controller
@@ -28,11 +27,42 @@ Testa ha flera controllers
 
 Ändra namn på exempelpaket
 
+Kan ev användas för en blädderfunktion i sökn.
+    /**
+     * Returns a limited list of filenames starting at the given offset.
+     *
+     * @param filesLocation     the directory to scan
+     * @param filterDirectories should we include directories in results
+     * @param offset            the starting offset
+     * @param limit             the maximum number of results
+     * @return a collection of file names
+     */
+    private static Collection<String> getFiles(final String filesLocation, final boolean filterDirectories,
+            final int offset, final int limit) throws IOException {
+        Stream<Path> stream = Files.list(Paths.get(filesLocation));
+
+        if (filterDirectories) {
+            stream = stream.filter(path -> !Files.isDirectory(path));
+        }
+
+        return stream
+                .map(Path::toString)
+                .sorted()
+                .skip(offset)
+                .limit(limit)
+                .collect(Collectors.toList());
+    }
+    
+
+
 
      
 
 KLART
 =====
+2020-11-07
+Max n st bilder läses upp åt gången vid sökning alla utan index
+
 2020-11-06
 Delete av bild och dess index
 
