@@ -30,12 +30,14 @@ Album: <span th:text="${albumName}"></span>
 Sök alla utan <a th:href="@{/searchAllWithoutIndex?albumName=}+${albumName}"><span>index</span></a>
 <p>
 
+<!-- Temporarily disabled
 <form action="/import" enctype="multipart/form-data">
 	<input type="hidden" id="albumName" name="albumName" th:value="${albumName}"></input>
     <label for="fileToUpload">Filer att importera:</label>
     <input type="file" name="fileToUpload" id="fileToUpload" multiple>
     <input type="submit" value="Upload Image" name="submit">
 </form>
+ -->
 
 
 </body>

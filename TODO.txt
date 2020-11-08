@@ -3,8 +3,6 @@ Att göra
 ========
 Version 1.0.0
 -------------
-På albumsidan tillfälligt ta bort allt om import
-
 Datum på bilden
 	Datum sökbart
 	- merge till develop
@@ -72,6 +70,7 @@ KLART
 =====
 2020-11-08
 På editsidan ta bort albumnamn precis ovanför bilden
+På albumsidan tillfälligt ta bort allt om import
 
 2020-11-07
 Max n st bilder läses upp åt gången vid sökning alla utan index
