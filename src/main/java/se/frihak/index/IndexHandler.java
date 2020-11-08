@@ -67,7 +67,7 @@ public class IndexHandler {
 		
 		//Lägg till nya index
 		for (String idx : indexesToAdd) {
-			Path path = Paths.get(album.getWordIndexPath().toPath().toString(), idx, enBild.getPictureName()+".hfidx");
+			Path path = Paths.get(wordIdxPath.toPath().toString(), idx, enBild.getPictureName()+".hfidx");
 			//File wordIndexfile1 = new File(wordIdxPath, idx);
 			//File wordIndexfile2 = new File(wordIndexfile1, enBild.getPictureName()+"hfidx");
 			Path parentDir = path.getParent();
@@ -80,7 +80,7 @@ public class IndexHandler {
 		
 		//Ta bort index som inte används mer
 		for (String idx : indexesToRemove) {
-			Path path = Paths.get(album.getWordIndexPath().toPath().toString(), idx, enBild.getPictureName()+".hfidx");
+			Path path = Paths.get(wordIdxPath.toPath().toString(), idx, enBild.getPictureName()+".hfidx");
 			
 			Files.deleteIfExists(path);
 			Path parentDir = path.getParent();
