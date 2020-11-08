@@ -5,8 +5,6 @@ Version 1.0.0
 -------------
 Datum på bilden
 	Datum sökbart
-	- merge till develop
-	- ny featurebranch för datum
 	- klass som gissar datum från filnamn + tester
 	- sök utan index, edit, visar gissat datum
 	- validering på datum editbilden
@@ -69,6 +67,8 @@ Kan ev användas för en blädderfunktion i sökn.
 KLART
 =====
 2020-11-08
+Ny featurebranch för datum feature/dateOnPicture
+Merge till develop
 På editsidan ta bort albumnamn precis ovanför bilden
 På albumsidan tillfälligt ta bort allt om import
 
