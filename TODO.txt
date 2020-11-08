@@ -3,8 +3,18 @@ Att göra
 ========
 Version 1.0.0
 -------------
+På albumsidan tillfälligt ta bort allt om import
+
 Datum på bilden
 	Datum sökbart
+	- merge till develop
+	- ny featurebranch för datum
+	- klass som gissar datum från filnamn + tester
+	- sök utan index, edit, visar gissat datum
+	- validering på datum editbilden
+	- spara datum för bilden
+	- i sökresultat vid index visa sparat datum
+	- sökning på datum, efter alla filtreringar på index i loopen
 
 
 Senare
@@ -60,6 +70,9 @@ Kan ev användas för en blädderfunktion i sökn.
 
 KLART
 =====
+2020-11-08
+På editsidan ta bort albumnamn precis ovanför bilden
+
 2020-11-07
 Max n st bilder läses upp åt gången vid sökning alla utan index
 
