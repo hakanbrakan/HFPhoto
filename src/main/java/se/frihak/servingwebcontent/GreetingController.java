@@ -33,6 +33,7 @@ import se.frihak.album.Album;
 import se.frihak.album.Albums;
 import se.frihak.album.Picture;
 import se.frihak.index.IndexHandler;
+import se.frihak.picture.PicturedateHelper;
 
 @Controller
 public class GreetingController {
@@ -163,6 +164,7 @@ public class GreetingController {
 		picInfoForm.setAllaIndex(album.getAllIndexes().toArray(new String[] {}));
 		picInfoForm.setValdaIndex(enBild.getIndexes().toArray(new String[] {}));
 		picInfoForm.setPictureName(pictureName);
+		picInfoForm.setPicturedate(PicturedateHelper.guessDateFromFilename(pictureName));
 		
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("enTraff", enBild);

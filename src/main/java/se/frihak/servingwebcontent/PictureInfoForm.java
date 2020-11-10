@@ -7,6 +7,7 @@ public class PictureInfoForm {
 	private String[] allaIndex;
 	private String[] valdaIndex;
 	private String pictureName;
+	private String picturedate;
 
 	public String getPictureName() {
 		return pictureName;
@@ -44,5 +45,12 @@ public class PictureInfoForm {
 	public String toString() {
 		return "PictureInfoForm [newIndex=" + newIndex + ", allaIndex=" + Arrays.toString(allaIndex) + ", valdaIndex=" + Arrays.toString(valdaIndex) + ", pictureName=" + pictureName + "]";
 	}
+
+	public void setPicturedate(String picdate) {
+		this.picturedate = picdate;
+	}
 	
+	public String getPicturedate() {
+		return this.picturedate;
+	}
 }
