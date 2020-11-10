@@ -5,7 +5,6 @@ Version 1.0.0
 -------------
 Datum på bilden
 	Datum sökbart
-	- klass som gissar datum från filnamn + tester
 	- sök utan index, edit, visar gissat datum
 	- validering på datum editbilden
 	- spara datum för bilden
@@ -66,6 +65,11 @@ Kan ev användas för en blädderfunktion i sökn.
 
 KLART
 =====
+2020-11-10
+Datum på bilden
+	Datum sökbart
+	- klass som gissar datum från filnamn + tester
+
 2020-11-08
 Ny featurebranch för datum feature/dateOnPicture
 Merge till develop
