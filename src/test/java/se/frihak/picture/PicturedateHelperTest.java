@@ -1,6 +1,8 @@
 package se.frihak.picture;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -38,7 +40,17 @@ public class PicturedateHelperTest {
 	}
 
 	@Test
-	public void invalidDate() {
+	public void guessInvalidDate() {
 		assertEquals("<datum saknas>", PicturedateHelper.guessDateFromFilename("kallekula.mov"));
+	}
+
+	@Test
+	public void invalidDate() {
+		assertTrue(PicturedateHelper.isInvalidDate("kallekula.mov"));
+	}
+
+	@Test
+	public void validDate() {
+		assertFalse(PicturedateHelper.isInvalidDate("2020-10-22"));
 	}
 }

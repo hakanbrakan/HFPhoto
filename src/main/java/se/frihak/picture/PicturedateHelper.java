@@ -37,4 +37,18 @@ public class PicturedateHelper {
 		return "<datum saknas>";
 	}
 
+	public static boolean isInvalidDate(String picturedate) {
+		return ! isValidDate(picturedate);
+	}
+
+	private static boolean isValidDate(String picturedate) {
+		try {
+			LocalDate.parse(picturedate);
+		} catch (Exception e) {
+			return false;
+		}
+
+		return true;
+	}
+
 }
