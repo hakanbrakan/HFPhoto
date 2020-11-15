@@ -5,7 +5,7 @@ Version 1.0.0
 -------------
 Datum på bilden
 	Datum sökbart
-	- validering på datum editbilden
+	- kraschar när man sparar utan att ha valt något index
 	- spara datum för bilden
 	- i sökresultat vid index visa sparat datum
 	- sökning på datum, efter alla filtreringar på index i loopen
@@ -64,6 +64,11 @@ Kan ev användas för en blädderfunktion i sökn.
 
 KLART
 =====
+2020-11-15
+Datum på bilden
+	Datum sökbart
+	- validering på datum editbilden
+
 2020-11-10
 Datum på bilden
 	Datum sökbart

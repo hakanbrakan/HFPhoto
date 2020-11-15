@@ -176,10 +176,27 @@ public class GreetingController {
 	@PostMapping("/updateIndexes")
 	public String uppdateraIndex(HttpSession session, @ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
 		Album album = albums.getAlbum(albumName);
+		Picture enBild = album.getPicture(picInfoForm.getPictureName());
+
+		if(PicturedateHelper.isInvalidDate(picInfoForm.getPicturedate())) {
+			String felaktigtDatum = picInfoForm.getPicturedate();
+			picInfoForm = new PictureInfoForm();
+			picInfoForm.setAllaIndex(album.getAllIndexes().toArray(new String[] {}));
+			picInfoForm.setValdaIndex(enBild.getIndexes().toArray(new String[] {}));
+			picInfoForm.setPictureName(enBild.getPictureName());
+			picInfoForm.setPicturedate(felaktigtDatum);
+			picInfoForm.setInvalidDate(true);
+			
+			model.addAttribute("albumName", albumName);
+			model.addAttribute("enTraff", enBild);
+			model.addAttribute("picInfoForm", picInfoForm);
+
+			return "editindexes";
+		}
+		
 		
 		@SuppressWarnings("unchecked") List<Picture> foundPictures = (List<Picture>) session.getAttribute("foundPictures");
 
-		Picture enBild = album.getPicture(picInfoForm.getPictureName());
 		
 		IndexHandler idxhanteraren = new IndexHandler(album);
 		idxhanteraren.updateIndexes(enBild, picInfoForm.getValdaIndex(), picInfoForm.getNewIndex());

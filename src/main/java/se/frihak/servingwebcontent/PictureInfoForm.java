@@ -8,6 +8,7 @@ public class PictureInfoForm {
 	private String[] valdaIndex;
 	private String pictureName;
 	private String picturedate;
+	private boolean invalidDate;
 
 	public String getPictureName() {
 		return pictureName;
@@ -52,5 +53,13 @@ public class PictureInfoForm {
 	
 	public String getPicturedate() {
 		return this.picturedate;
+	}
+
+	public boolean isInvalidDate() {
+		return invalidDate;
+	}
+
+	public void setInvalidDate(boolean invalidDate) {
+		this.invalidDate = invalidDate;
 	}
 }

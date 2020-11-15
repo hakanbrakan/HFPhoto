@@ -41,6 +41,8 @@ table.d {
 img {
   width: 80%;  
 }
+
+.validationerror {background-color: #f44336;} /* Red */ 
 </style>
 
 </head>
@@ -64,6 +66,7 @@ img {
 					<input type="hidden" id="pictureName" name="pictureName" th:value="*{pictureName}"></input>
             	   	
       				<label for="picturedate">Datum:</label><input type="text" id="picturedate" name="picturedate" th:value="*{picturedate}">
+      				<label class="validationerror" th:if="*{invalidDate}" for="picturedate">Felaktigt datum:</label>
 			        <div th:each="ettIndex : *{allaIndex}">
 			            <input type="checkbox" th:field="*{valdaIndex}" th:value="${ettIndex}">
 			            <label th:for="${#ids.prev('valdaIndex')}"  th:text="${ettIndex}">Index saknas</label>
