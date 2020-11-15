@@ -45,7 +45,9 @@ public class Picture {
 		//List<String> indexesBeforeChange = filehandler.getContentAsList(album.getPictureIndexPath(), enBild.getPictureName()+".hfidx");
 		
 		if (indexesToStore.isEmpty()) {
-			Files.delete(indexfile.toPath());
+			if(indexfile.exists()) {
+				Files.delete(indexfile.toPath());
+			}
 		} else {
 			Files.write(indexfile.toPath(), indexesToStore);
 		}
