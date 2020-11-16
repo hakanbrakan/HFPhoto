@@ -91,4 +91,64 @@ public class IndexHandler {
 		}
 		
 	}
+
+	public void updateDate(Picture enBild, String picturedate) throws IOException {
+		storePictureDateindex(enBild, picturedate);
+		storeDatePictureindex(enBild, picturedate);
+	}
+
+	private void storeDatePictureindex(Picture enBild, String picturedate) throws IOException {
+		File picDatePath = album.getDatePicturePath();
+		
+		String indexToRemove = enBild.getDate();
+		String indexToAdd = picturedate;
+		
+		//Ta bort index som inte används mer
+		Path path = Paths.get(picDatePath.toPath().toString(), indexToRemove, enBild.getPictureName()+".hfidx");
+		
+		Files.deleteIfExists(path);
+		Path parentDir = path.getParent();
+		if (parentDir.toFile().exists()) {
+			if (parentDir.toFile().listFiles().length <= 0) {
+				Files.deleteIfExists(parentDir);
+			}
+		}
+		
+		//Lägg till nya index
+		Path path2 = Paths.get(picDatePath.toPath().toString(), indexToAdd, enBild.getPictureName()+".hfidx");
+		Path parentDir2 = path2.getParent();
+		if (!Files.exists(parentDir2)) {
+			Files.createDirectories(parentDir2);
+		}
+		
+		Files.write(path2, Arrays.asList("hej"), StandardCharsets.UTF_8);
+	}
+
+	private void storePictureDateindex(Picture enBild, String picturedate) throws IOException {
+		File picDatePath = album.getPictureDatePath();
+		
+		String indexToRemove = enBild.getDate();
+		String indexToAdd = picturedate;
+		
+		//Ta bort index som inte används mer
+		Path path = Paths.get(picDatePath.toPath().toString(), enBild.getPictureName(), indexToRemove+".hfidx");
+		
+		Files.deleteIfExists(path);
+		Path parentDir = path.getParent();
+		if (parentDir.toFile().exists()) {
+			if (parentDir.toFile().listFiles().length <= 0) {
+				Files.deleteIfExists(parentDir);
+			}
+		}
+		
+		//Lägg till nya index
+		Path path2 = Paths.get(picDatePath.toPath().toString(), enBild.getPictureName(), indexToAdd+".hfidx");
+		Path parentDir2 = path2.getParent();
+		if (!Files.exists(parentDir2)) {
+			Files.createDirectories(parentDir2);
+		}
+		
+		Files.write(path2, Arrays.asList("hej"), StandardCharsets.UTF_8);
+		
+	}
 }

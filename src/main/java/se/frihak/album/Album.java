@@ -227,4 +227,12 @@ public class Album {
 		return kandidaterAttReturnera;
 	}
 
+	public File getPictureDatePath() {
+		return new File(file, "pictureDateIndex");
+	}
+
+	public File getDatePicturePath() {
+		return new File(file, "datePictureIndex");
+	}
+
 }

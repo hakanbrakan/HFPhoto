@@ -200,6 +200,7 @@ public class GreetingController {
 		
 		IndexHandler idxhanteraren = new IndexHandler(album);
 		idxhanteraren.updateIndexes(enBild, picInfoForm.getValdaIndex(), picInfoForm.getNewIndex());
+		idxhanteraren.updateDate(enBild, picInfoForm.getPicturedate());
 		
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("importedPictures", foundPictures);

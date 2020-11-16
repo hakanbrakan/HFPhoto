@@ -24,6 +24,8 @@ public class Albums {
 			Files.createDirectories(Paths.get(path.toString(),"pictures"));
 			Files.createDirectories(Paths.get(path.toString(),"pictureIndex"));
 			Files.createDirectories(Paths.get(path.toString(),"wordIndex"));
+			Files.createDirectories(Paths.get(path.toString(),"datePictureIndex"));
+			Files.createDirectories(Paths.get(path.toString(),"pictureDateIndex"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

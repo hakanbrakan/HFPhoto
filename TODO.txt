@@ -5,9 +5,12 @@ Version 1.0.0
 -------------
 Datum på bilden
 	Datum sökbart
-	- spara datum för bilden
+	- på editbilden skall sparat datum användas i första hand och gissat i andra
+	- när man byter datum på editsidan skall nya skrivas och gamla tas bort
 	- i sökresultat vid index visa sparat datum
 	- sökning på datum, efter alla filtreringar på index i loopen
+	- när bild tas bort skall även datum tas bort
+	- Refaktorera storeDatePictureindex och nästa i indexHandler
 
 
 Senare
@@ -63,6 +66,11 @@ Kan ev användas för en blädderfunktion i sökn.
 
 KLART
 =====
+2020-11-16
+Datum på bilden
+	Datum sökbart
+	- spara datum för bilden
+
 2020-11-15
 Datum på bilden
 	Datum sökbart

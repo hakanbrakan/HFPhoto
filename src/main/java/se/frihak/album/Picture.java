@@ -45,6 +45,7 @@ public class Picture {
 		//List<String> indexesBeforeChange = filehandler.getContentAsList(album.getPictureIndexPath(), enBild.getPictureName()+".hfidx");
 		
 		if (indexesToStore.isEmpty()) {
+			//TODO Nedan kan ersättas med Files.deleteifexists
 			if(indexfile.exists()) {
 				Files.delete(indexfile.toPath());
 			}
@@ -81,6 +82,11 @@ public class Picture {
 	@Override
 	public String toString() {
 		return "Picture [picturePath=" + picturePath + "]";
+	}
+
+	public String getDate() {
+		// TODO Auto-generated method stub
+		return "<asd>";
 	}
 
 }
