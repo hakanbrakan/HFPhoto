@@ -164,7 +164,7 @@ public class GreetingController {
 		picInfoForm.setAllaIndex(album.getAllIndexes().toArray(new String[] {}));
 		picInfoForm.setValdaIndex(enBild.getIndexes().toArray(new String[] {}));
 		picInfoForm.setPictureName(pictureName);
-		picInfoForm.setPicturedate(PicturedateHelper.guessDateFromFilename(pictureName));
+		picInfoForm.setPicturedate(enBild.getDate());
 		
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("enTraff", enBild);

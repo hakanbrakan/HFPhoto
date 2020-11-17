@@ -93,14 +93,15 @@ public class IndexHandler {
 	}
 
 	public void updateDate(Picture enBild, String picturedate) throws IOException {
-		storePictureDateindex(enBild, picturedate);
-		storeDatePictureindex(enBild, picturedate);
+		String indexToRemove = enBild.getDate();
+		storePictureDateindex(enBild, picturedate, indexToRemove);
+		storeDatePictureindex(enBild, picturedate, indexToRemove);
 	}
 
-	private void storeDatePictureindex(Picture enBild, String picturedate) throws IOException {
+	private void storeDatePictureindex(Picture enBild, String picturedate, String indexToRemove) throws IOException {
 		File picDatePath = album.getDatePicturePath();
 		
-		String indexToRemove = enBild.getDate();
+//		String indexToRemove = enBild.getDate();
 		String indexToAdd = picturedate;
 		
 		//Ta bort index som inte används mer
@@ -124,10 +125,10 @@ public class IndexHandler {
 		Files.write(path2, Arrays.asList("hej"), StandardCharsets.UTF_8);
 	}
 
-	private void storePictureDateindex(Picture enBild, String picturedate) throws IOException {
+	private void storePictureDateindex(Picture enBild, String picturedate, String indexToRemove) throws IOException {
 		File picDatePath = album.getPictureDatePath();
 		
-		String indexToRemove = enBild.getDate();
+		//String indexToRemove = enBild.getDate();
 		String indexToAdd = picturedate;
 		
 		//Ta bort index som inte används mer

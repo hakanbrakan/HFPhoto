@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.io.FilenameUtils;
+
+import se.frihak.picture.PicturedateHelper;
+
 public class Picture {
 	private Path picturePath;
 	private boolean isPicture;
@@ -85,8 +89,22 @@ public class Picture {
 	}
 
 	public String getDate() {
-		// TODO Auto-generated method stub
-		return "<asd>";
+		File dateFolder = getPictureDateFolder();
+		
+		if (dateFolder.exists()) {
+			File idx = dateFolder.listFiles()[0];
+			String datum = FilenameUtils.removeExtension(idx.getName());
+			return datum;
+		}
+		
+		return  PicturedateHelper.guessDateFromFilename(getPictureName());
+	}
+
+	private File getPictureDateFolder() {
+		Path parent = picturePath.getParent().getParent();
+		File path1 = new File(parent.toFile(), "pictureDateIndex");
+		File path2 = new File(path1, getPictureName());
+		return path2;
 	}
 
 }
