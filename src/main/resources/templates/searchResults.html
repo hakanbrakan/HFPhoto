@@ -61,11 +61,12 @@ img {
         </tr>
         <tr th:unless="${importedPictures.empty}" th:each="enTraff : ${importedPictures}">
             <td  class="left">
+                <span th:text="${enTraff.date}"></span>
+                <p>
 				<div th:each="ettIndex : ${enTraff.indexes}">
 					<label th:text="${ettIndex}">Index saknas</label>
 				</div>
                <!-- 
-               <span th:text="${enTraff.picturePath}"></span>
                <span th:text="${enTraff.isPicture}"></span>
                 -->
                 <p>

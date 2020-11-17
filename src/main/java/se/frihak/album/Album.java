@@ -95,6 +95,7 @@ public class Album {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println(pictureName);
 			return null;
 		}
 
