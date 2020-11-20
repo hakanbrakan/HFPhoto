@@ -125,6 +125,8 @@ public class GreetingController {
 		picInfoForm.setAllaIndex(allIndexes.toArray(new String[] {}));
 		picInfoForm.setValdaIndex(new String[] {});
 		picInfoForm.setPictureName("test");
+		picInfoForm.setFromDate("0001-01-01");
+		picInfoForm.setTomDate("9999-12-31");;
 		
 		model.addAttribute("picInfoForm", picInfoForm);
 
@@ -211,7 +213,8 @@ public class GreetingController {
 	public String search(HttpSession session, @ModelAttribute PictureInfoForm picInfoForm, @RequestParam(value="albumName", required=true) String albumName, Model model) throws IOException {
 		Album album = albums.getAlbum(albumName);
 
-		List<Picture> foundPictures = album.searchWithIndex(Arrays.asList(picInfoForm.getValdaIndex()));
+		List<Picture> indexfilteredPictures = album.searchWithIndex(Arrays.asList(picInfoForm.getValdaIndex()));
+		List<Picture> foundPictures = album.filterOnDates(indexfilteredPictures, picInfoForm);
 		Collections.sort(foundPictures, new SortPicturesByName());
 		
 		session.setAttribute("foundPictures", foundPictures);

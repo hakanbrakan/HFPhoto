@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import se.frihak.servingwebcontent.PictureInfoForm;
+
 
 public class Album {
 	private static final int NUM_PICTURES_SEARCH_RESULT = 10;
@@ -234,6 +236,23 @@ public class Album {
 
 	public File getDatePicturePath() {
 		return new File(file, "datePictureIndex");
+	}
+
+	public List<Picture> filterOnDates(List<Picture> indexfilteredPictures, PictureInfoForm picInfoForm) {
+		List<Picture> filteredPictures = new ArrayList<>();
+		
+		if ("0001-01-01".equalsIgnoreCase(picInfoForm.getFromDate()) && "9999-12-31".equalsIgnoreCase(picInfoForm.getTomDate())) {
+			filteredPictures.addAll(indexfilteredPictures);
+		} else {
+			for (Picture onePicture : indexfilteredPictures) {
+				if (onePicture.datumInom(picInfoForm.getFromDate(), picInfoForm.getTomDate())) {
+					filteredPictures.add(onePicture);
+				}
+			}
+		}
+
+
+		return filteredPictures ;
 	}
 
 }

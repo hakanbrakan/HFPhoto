@@ -5,7 +5,6 @@ Version 1.0.0
 -------------
 Datum på bilden
 	Datum sökbart
-	- sökning på datum, efter alla filtreringar på index i loopen
 	- när bild tas bort skall även datum tas bort
 	- Refaktorera storeDatePictureindex och nästa i indexHandler
 
@@ -67,6 +66,7 @@ KLART
 Datum på bilden
 	Datum sökbart
 	- om datum är oförändrat skall uppdatering ej ske
+	- sökning på datum, efter alla filtreringar på index i loopen
 
 2020-11-17
 Datum på bilden

@@ -9,6 +9,8 @@ public class PictureInfoForm {
 	private String pictureName;
 	private String picturedate;
 	private boolean invalidDate;
+	private String fromDate;
+	private String tomDate;
 
 	public String getPictureName() {
 		return pictureName;
@@ -61,5 +63,21 @@ public class PictureInfoForm {
 
 	public void setInvalidDate(boolean invalidDate) {
 		this.invalidDate = invalidDate;
+	}
+
+	public String getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(String fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public String getTomDate() {
+		return tomDate;
+	}
+
+	public void setTomDate(String tomDate) {
+		this.tomDate = tomDate;
 	}
 }

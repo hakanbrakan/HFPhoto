@@ -14,6 +14,9 @@ Album: <span th:text="${albumName}"></span>
 					<input type="hidden" id="albumName" name="albumName" th:value="${albumName}"></input>
 					<input type="hidden" id="pictureName" name="pictureName" th:value="*{pictureName}"></input>
             	   	
+      				<label for="fromDate">Datum from:</label><input type="text" id="fromDate" name="fromDate" th:value="*{fromDate}">
+      				<label for="tomDate">Datum tom:</label><input type="text" id="tomDate" name="tomDate" th:value="*{tomDate}">
+
 			        <div th:each="ettIndex : *{allaIndex}">
 			            <input type="checkbox" th:field="*{valdaIndex}" th:value="${ettIndex}">
 			            <label th:for="${#ids.prev('valdaIndex')}"  th:text="${ettIndex}">Index saknas</label>

@@ -107,4 +107,10 @@ public class Picture {
 		return path2;
 	}
 
+	public boolean datumInom(String fromDate, String tomDate) {
+		String mittDatum = getDate();
+
+		return mittDatum.compareTo(fromDate) >=0 && mittDatum.compareTo(tomDate) <= 0;
+	}
+
 }
