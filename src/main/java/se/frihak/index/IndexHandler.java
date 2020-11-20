@@ -94,8 +94,10 @@ public class IndexHandler {
 
 	public void updateDate(Picture enBild, String picturedate) throws IOException {
 		String indexToRemove = enBild.getDate();
-		storePictureDateindex(enBild, picturedate, indexToRemove);
-		storeDatePictureindex(enBild, picturedate, indexToRemove);
+		if ( ! indexToRemove.equalsIgnoreCase(picturedate)) {
+			storePictureDateindex(enBild, picturedate, indexToRemove);
+			storeDatePictureindex(enBild, picturedate, indexToRemove);
+		}
 	}
 
 	private void storeDatePictureindex(Picture enBild, String picturedate, String indexToRemove) throws IOException {

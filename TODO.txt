@@ -5,8 +5,6 @@ Version 1.0.0
 -------------
 Datum på bilden
 	Datum sökbart
-	- när man byter datum på editsidan skall nya skrivas och gamla tas bort
-	- om datum är oförändrat skall uppdatering ej ske
 	- sökning på datum, efter alla filtreringar på index i loopen
 	- när bild tas bort skall även datum tas bort
 	- Refaktorera storeDatePictureindex och nästa i indexHandler
@@ -65,11 +63,17 @@ Kan ev användas för en blädderfunktion i sökn.
 
 KLART
 =====
+2020-11-20
+Datum på bilden
+	Datum sökbart
+	- om datum är oförändrat skall uppdatering ej ske
+
 2020-11-17
 Datum på bilden
 	Datum sökbart
 	- på editbilden skall sparat datum användas i första hand och gissat i andra
 	- i sökresultat vid index visa sparat datum
+	- när man byter datum på editsidan skall nya skrivas och gamla tas bort
 
 2020-11-16
 Datum på bilden
