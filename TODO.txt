@@ -5,12 +5,13 @@ Version 1.0.0
 -------------
 Datum på bilden
 	Datum sökbart
-	- Bugg, datum sparas inte första gången om man behåller defaultvärdet
+	- På albumsidan visa index i spalter
 	- Refaktorera storeDatePictureindex och nästa i indexHandler
 
 
 Senare
 ------
+Bugg: Antal bilder på album blir ett fel ibland då det finns en folder som heter .DS_Store
 Delete av bild funkar inte riktigt, ibland försöker den läsa upp en borttagen bild - jättekonstigt
 
 Max n st bilder läses upp åt gången vid sökning. Fundera på om det behövs, tror det, men ta från properties - idag är det hårdkodat
@@ -66,6 +67,8 @@ KLART
 Datum på bilden
 	Datum sökbart
 	- när bild tas bort skall även datum tas bort
+	- Bugg, datum sparas inte första gången om man behåller defaultvärdet - Funkar ändå, man behöver inte spara
+	- Visa antal bilder i album på albumsidan
 
 2020-11-20
 Datum på bilden

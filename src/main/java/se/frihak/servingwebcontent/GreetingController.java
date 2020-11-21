@@ -135,6 +135,7 @@ public class GreetingController {
 
 		model.addAttribute("allaIndex", allIndexes);
 		model.addAttribute("albumName", albumName);
+		model.addAttribute("numOfPictures", album.getNumberOfPictures());
 		return "album";
 	}
 	

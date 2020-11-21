@@ -255,4 +255,9 @@ public class Album {
 		return filteredPictures ;
 	}
 
+	public int getNumberOfPictures() {
+		int antalFiler = getPictureFolder().list().length;
+		return antalFiler;
+	}
+
 }
