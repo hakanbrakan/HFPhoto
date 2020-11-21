@@ -244,6 +244,8 @@ public class GreetingController {
 		List<Picture> showPictures = new ArrayList<>(foundPictures);
 		session.setAttribute("foundPictures", showPictures);
 		enBild.remove();
+		IndexHandler idxHandler = new IndexHandler(album);
+		idxHandler.removePicturedateIndex(enBild);
 
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("importedPictures", showPictures);

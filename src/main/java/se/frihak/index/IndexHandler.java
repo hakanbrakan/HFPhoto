@@ -154,4 +154,30 @@ public class IndexHandler {
 		Files.write(path2, Arrays.asList("hej"), StandardCharsets.UTF_8);
 		
 	}
+
+	public void removePicturedateIndex(Picture enBild) throws IOException {
+
+		
+		Path path = Paths.get(album.getDatePicturePath().toPath().toString(), enBild.getDate(), enBild.getPictureName()+".hfidx"); 
+
+		Files.deleteIfExists(path);
+		Path parentDir = path.getParent();
+		if (parentDir.toFile().exists()) {
+			if (parentDir.toFile().listFiles().length <= 0) {
+				Files.deleteIfExists(parentDir);
+			}
+		}
+
+		
+		
+		path = Paths.get(album.getPictureDatePath().toPath().toString(), enBild.getPictureName(), enBild.getDate()+".hfidx"); 
+
+		Files.deleteIfExists(path);
+		parentDir = path.getParent();
+		if (parentDir.toFile().exists()) {
+			if (parentDir.toFile().listFiles().length <= 0) {
+				Files.deleteIfExists(parentDir);
+			}
+		}
+	}
 }

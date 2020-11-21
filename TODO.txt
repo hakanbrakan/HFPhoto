@@ -5,7 +5,7 @@ Version 1.0.0
 -------------
 Datum på bilden
 	Datum sökbart
-	- när bild tas bort skall även datum tas bort
+	- Bugg, datum sparas inte första gången om man behåller defaultvärdet
 	- Refaktorera storeDatePictureindex och nästa i indexHandler
 
 
@@ -62,6 +62,11 @@ Kan ev användas för en blädderfunktion i sökn.
 
 KLART
 =====
+2020-11-21
+Datum på bilden
+	Datum sökbart
+	- när bild tas bort skall även datum tas bort
+
 2020-11-20
 Datum på bilden
 	Datum sökbart
