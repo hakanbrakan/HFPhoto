@@ -53,4 +53,19 @@ public class PicturedateHelperTest {
 	public void validDate() {
 		assertFalse(PicturedateHelper.isInvalidDate("2020-10-22"));
 	}
+
+	@Test
+	public void bildJpg_3() {
+		assertEquals("2010-07-03", PicturedateHelper.guessDateFromFilename("2010-07-03 11.11.02653.jpg"));
+	}
+
+	@Test
+	public void bildBmp_1() {
+		assertEquals("2010-01-01", PicturedateHelper.guessDateFromFilename("2010-01-01 01.01.01.bmp"));
+	}
+
+	@Test
+	public void bildJpg_4() {
+		assertEquals("2007-11-01", PicturedateHelper.guessDateFromFilename("2007-11-01 0009.JPG"));
+	}
 }

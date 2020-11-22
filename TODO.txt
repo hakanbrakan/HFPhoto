@@ -63,6 +63,11 @@ Kan ev användas för en blädderfunktion i sökn.
 
 KLART
 =====
+2020-11-22
+Datum på bilden
+	Datum sökbart
+	- Fler format på filnamnen
+
 2020-11-21
 Datum på bilden
 	Datum sökbart
