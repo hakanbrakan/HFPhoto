@@ -81,15 +81,8 @@ public class IndexHandler {
 		//Ta bort index som inte används mer
 		for (String idx : indexesToRemove) {
 			Path path = Paths.get(wordIdxPath.toPath().toString(), idx, enBild.getPictureName()+".hfidx");
-			
-			Files.deleteIfExists(path);
-			Path parentDir = path.getParent();
-			if (parentDir.toFile().listFiles().length <= 0) {
-				Files.deleteIfExists(parentDir);
-			}
-
+			removeFileAndParentIfEmpty(path);
 		}
-		
 	}
 
 	public void updateDate(Picture enBild, String picturedate) throws IOException {
@@ -103,19 +96,11 @@ public class IndexHandler {
 	private void storeDatePictureindex(Picture enBild, String picturedate, String indexToRemove) throws IOException {
 		File picDatePath = album.getDatePicturePath();
 		
-//		String indexToRemove = enBild.getDate();
 		String indexToAdd = picturedate;
 		
 		//Ta bort index som inte används mer
 		Path path = Paths.get(picDatePath.toPath().toString(), indexToRemove, enBild.getPictureName()+".hfidx");
-		
-		Files.deleteIfExists(path);
-		Path parentDir = path.getParent();
-		if (parentDir.toFile().exists()) {
-			if (parentDir.toFile().listFiles().length <= 0) {
-				Files.deleteIfExists(parentDir);
-			}
-		}
+		removeFileAndParentIfEmpty(path);
 		
 		//Lägg till nya index
 		Path path2 = Paths.get(picDatePath.toPath().toString(), indexToAdd, enBild.getPictureName()+".hfidx");
@@ -135,14 +120,7 @@ public class IndexHandler {
 		
 		//Ta bort index som inte används mer
 		Path path = Paths.get(picDatePath.toPath().toString(), enBild.getPictureName(), indexToRemove+".hfidx");
-		
-		Files.deleteIfExists(path);
-		Path parentDir = path.getParent();
-		if (parentDir.toFile().exists()) {
-			if (parentDir.toFile().listFiles().length <= 0) {
-				Files.deleteIfExists(parentDir);
-			}
-		}
+		removeFileAndParentIfEmpty(path);
 		
 		//Lägg till nya index
 		Path path2 = Paths.get(picDatePath.toPath().toString(), enBild.getPictureName(), indexToAdd+".hfidx");
@@ -152,28 +130,19 @@ public class IndexHandler {
 		}
 		
 		Files.write(path2, Arrays.asList("hej"), StandardCharsets.UTF_8);
-		
 	}
 
 	public void removePicturedateIndex(Picture enBild) throws IOException {
-
-		
 		Path path = Paths.get(album.getDatePicturePath().toPath().toString(), enBild.getDate(), enBild.getPictureName()+".hfidx"); 
-
-		Files.deleteIfExists(path);
-		Path parentDir = path.getParent();
-		if (parentDir.toFile().exists()) {
-			if (parentDir.toFile().listFiles().length <= 0) {
-				Files.deleteIfExists(parentDir);
-			}
-		}
-
-		
+		removeFileAndParentIfEmpty(path);
 		
 		path = Paths.get(album.getPictureDatePath().toPath().toString(), enBild.getPictureName(), enBild.getDate()+".hfidx"); 
+		removeFileAndParentIfEmpty(path);
+	}
 
+	private void removeFileAndParentIfEmpty(Path path) throws IOException {
 		Files.deleteIfExists(path);
-		parentDir = path.getParent();
+		Path parentDir = path.getParent();
 		if (parentDir.toFile().exists()) {
 			if (parentDir.toFile().listFiles().length <= 0) {
 				Files.deleteIfExists(parentDir);
