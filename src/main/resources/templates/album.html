@@ -17,10 +17,16 @@ Album: <span th:text="${albumName}"></span>
       				<label for="fromDate">Datum from:</label><input type="text" id="fromDate" name="fromDate" th:value="*{fromDate}">
       				<label for="tomDate">Datum tom:</label><input type="text" id="tomDate" name="tomDate" th:value="*{tomDate}">
 
-			        <div th:each="ettIndex : *{allaIndex}">
-			            <input type="checkbox" th:field="*{valdaIndex}" th:value="${ettIndex}">
-			            <label th:for="${#ids.prev('valdaIndex')}"  th:text="${ettIndex}">Index saknas</label>
-			        </div>
+					<table>
+					<tr>
+			        <td style="vertical-align:top" th:each="enSpalt : ${spalter}">
+				        <div th:each="ettIndex : ${enSpalt}">
+				            <input type="checkbox" th:field="*{valdaIndex}" th:value="${ettIndex}">
+				            <label th:for="${#ids.prev('valdaIndex')}"  th:text="${ettIndex}">Index saknas</label>
+				        </div>
+			        </td>
+					</tr>
+					</table>
             	   
 					<div th:if="*{allaIndex.length > 0}" class="col-md-6 form-group">
             			<input type="submit" value="Sök">

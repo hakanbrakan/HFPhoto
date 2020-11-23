@@ -5,7 +5,6 @@ Version 1.0.0
 -------------
 Datum på bilden
 	Datum sökbart
-	- På albumsidan visa index i spalter
 	- Refaktorera storeDatePictureindex och nästa i indexHandler
 
 
@@ -63,6 +62,11 @@ Kan ev användas för en blädderfunktion i sökn.
 
 KLART
 =====
+2020-11-23
+Datum på bilden
+	Datum sökbart
+	- På albumsidan visa index i spalter
+
 2020-11-22
 Datum på bilden
 	Datum sökbart

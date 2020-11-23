@@ -37,6 +37,7 @@ import se.frihak.picture.PicturedateHelper;
 
 @Controller
 public class GreetingController {
+	private static final int ANTAL_SPALTER = 5;
 	private Albums albums;
 	
 	public GreetingController(@Value("${pathToAlbums}") String pathToAlbums) {
@@ -119,6 +120,7 @@ public class GreetingController {
 		Album album = albums.getAlbum(albumName);
 
 		List<String> allIndexes = album.getAllIndexes();
+		List<List<String>> spalter = album.skapaSpalter(allIndexes, ANTAL_SPALTER);
 
 		
 		PictureInfoForm picInfoForm = new PictureInfoForm();
@@ -134,6 +136,7 @@ public class GreetingController {
 		
 
 		model.addAttribute("allaIndex", allIndexes);
+		model.addAttribute("spalter", spalter);
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("numOfPictures", album.getNumberOfPictures());
 		return "album";

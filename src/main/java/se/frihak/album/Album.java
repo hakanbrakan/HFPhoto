@@ -174,6 +174,26 @@ public class Album {
 		return allaIndex;
 	}
 
+	public List<List<String>> skapaSpalter(List<String> allaIndex, int antalSpalter) {
+		List<List<String>> attReturnera = new ArrayList<>();
+
+		for (int i = 0; i < antalSpalter; i++) {
+			List<String> enSpalt = new ArrayList<>();
+			attReturnera.add(enSpalt);
+		}
+		
+		int antalIEnSpalt = (allaIndex.size() / antalSpalter) + 1;
+		int spaltraknare = 0;
+		for (String ettIdx : allaIndex) {
+			List<String> lista = attReturnera.get(spaltraknare);
+			lista.add(ettIdx);
+			if (lista.size() >= antalIEnSpalt) {
+				spaltraknare++;
+			}
+		}
+		return attReturnera;
+	}
+
 	public List<Picture> searchWithIndex(List<String> valdaIndex) {
 		List<String> idxAttKontrollera = new ArrayList<>(valdaIndex);
 		List<String> kandidater = new ArrayList<>();
