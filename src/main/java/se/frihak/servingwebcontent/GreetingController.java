@@ -37,6 +37,8 @@ import se.frihak.picture.PicturedateHelper;
 
 @Controller
 public class GreetingController {
+	private static final String EDIT_INDEXES_PAGE = "editIndexes";
+	private static final String SEARCH_RESULTS_PAGE = "searchResults";
 	private static final int ANTAL_SPALTER = 5;
 	private Albums albums;
 	
@@ -77,7 +79,7 @@ public class GreetingController {
 		//redirect till sökresultat med sökta bilder som saknar attribut
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("importedPictures", importedPictures);
-		return "searchResults";
+		return SEARCH_RESULTS_PAGE;
 	}
 
 	@GetMapping("/searchAllWithoutIndex")
@@ -91,7 +93,7 @@ public class GreetingController {
 
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("importedPictures", foundPictures);
-		return "searchResults";
+		return SEARCH_RESULTS_PAGE;
 	}
 
 	@GetMapping("/image")
@@ -176,7 +178,7 @@ public class GreetingController {
 		model.addAttribute("enTraff", enBild);
 		model.addAttribute("picInfoForm", picInfoForm);
 
-		return "editindexes";
+		return EDIT_INDEXES_PAGE;
 	}
 	
 	@PostMapping("/updateIndexes")
@@ -197,7 +199,7 @@ public class GreetingController {
 			model.addAttribute("enTraff", enBild);
 			model.addAttribute("picInfoForm", picInfoForm);
 
-			return "editindexes";
+			return EDIT_INDEXES_PAGE;
 		}
 		
 		
@@ -210,7 +212,7 @@ public class GreetingController {
 		
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("importedPictures", foundPictures);
-		return "searchResults";
+		return SEARCH_RESULTS_PAGE;
 	}
 	
 	@PostMapping("/search")
@@ -225,7 +227,7 @@ public class GreetingController {
 		
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("importedPictures", foundPictures);
-		return "searchResults";
+		return SEARCH_RESULTS_PAGE;
 	}
 	
 	private String getFirstExistingPath(String path) {
@@ -253,7 +255,7 @@ public class GreetingController {
 
 		model.addAttribute("albumName", albumName);
 		model.addAttribute("importedPictures", showPictures);
-		return "searchResults";
+		return SEARCH_RESULTS_PAGE;
 	}
 
 	private void removePictureFromList(List<Picture> foundPictures, Picture enBild) {
