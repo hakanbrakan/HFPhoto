@@ -5,8 +5,8 @@ Version 1.0.0
 -------------
 Datum på bilden
 	Datum sökbart
-	- Testa byggd jar och separat properties
-	- På readme beskriv hur man bygger en jar med maven
+	- Bug, antal i spalterna gör att det inte alltid blir rätt antal spalter
+		14 ord ger 5 spalter idag, 13 ger 5?, 15 ger 4 = fel, 16 ger 4 = fel, 17 ger 5, 11 ger 4= fel, 8 ger 4=fel, 6 ger 3=fel
 	- Ändra versionsnummer
 
 
@@ -64,6 +64,14 @@ Kan ev användas för en blädderfunktion i sökn.
 
 KLART
 =====
+2020-11-27
+Version 1.0.0
+-------------
+Datum på bilden
+	Datum sökbart
+	- Testa byggd jar och separat properties
+	- På readme beskriv hur man bygger en jar med maven
+
 2020-11-23
 Datum på bilden
 	Datum sökbart

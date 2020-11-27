@@ -85,7 +85,7 @@ public class Album {
 
 	private boolean isPicture(Path picturePath) {
 		Path name = picturePath.getFileName();
-		return name.toString().endsWith(".jpg");
+		return name.toString().toLowerCase().endsWith(".jpg") || name.toString().toLowerCase().endsWith(".bmp") || name.toString().toLowerCase().endsWith(".png");
 	}
 
 	public InputStream getFileInputStream(String pictureName) throws FileNotFoundException {
