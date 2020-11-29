@@ -12,6 +12,7 @@ Datum på bilden
 
 Senare
 ------
+Refaktorera: metoden isPicture på Album borde flyttas till Picture och bli statisk
 Bugg: Antal bilder på album blir ett fel ibland då det finns en folder som heter .DS_Store
 Delete av bild funkar inte riktigt, ibland försöker den läsa upp en borttagen bild - jättekonstigt
 
