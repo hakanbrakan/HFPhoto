@@ -124,7 +124,6 @@ public class GreetingController {
 		List<String> allIndexes = album.getAllIndexes();
 		List<List<String>> spalter = album.skapaSpalter(allIndexes, ANTAL_SPALTER);
 
-		
 		PictureInfoForm picInfoForm = new PictureInfoForm();
 		picInfoForm.setAllaIndex(allIndexes.toArray(new String[] {}));
 		picInfoForm.setValdaIndex(new String[] {});
@@ -133,10 +132,6 @@ public class GreetingController {
 		picInfoForm.setTomDate("9999-12-31");;
 		
 		model.addAttribute("picInfoForm", picInfoForm);
-
-		
-		
-
 		model.addAttribute("allaIndex", allIndexes);
 		model.addAttribute("spalter", spalter);
 		model.addAttribute("albumName", albumName);
