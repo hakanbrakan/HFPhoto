@@ -182,12 +182,13 @@ public class Album {
 			attReturnera.add(enSpalt);
 		}
 		
-		int antalIEnSpalt = (allaIndex.size() / antalSpalter) + 1;
+		int antalIEnSpalt = (allaIndex.size() / antalSpalter);
+		int rest = allaIndex.size() - ( antalIEnSpalt *antalSpalter);
 		int spaltraknare = 0;
 		for (String ettIdx : allaIndex) {
 			List<String> lista = attReturnera.get(spaltraknare);
 			lista.add(ettIdx);
-			if (lista.size() >= antalIEnSpalt) {
+			if (lista.size() >= antalIEnSpalt + (spaltraknare < rest ? 1 : 0)) {
 				spaltraknare++;
 			}
 		}
