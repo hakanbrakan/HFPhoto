@@ -1,15 +1,14 @@
 
 Att göra
 ========
-Version 1.0.0
+Version 1.0.1
 -------------
-Datum på bilden
-	Datum sökbart
-	- Ändra versionsnummer
 
 
 Senare
 ------
+På förstasidan visa aktuellt versionsnummer
+
 Refaktorera: metoden isPicture på Album borde flyttas till Picture och bli statisk
 Bugg: Antal bilder på album blir ett fel ibland då det finns en folder som heter .DS_Store
 Delete av bild funkar inte riktigt, ibland försöker den läsa upp en borttagen bild - jättekonstigt
@@ -64,10 +63,13 @@ Kan ev användas för en blädderfunktion i sökn.
 KLART
 =====
 2020-12-01
+Version 1.0.0
+-------------
 Datum på bilden
 	Datum sökbart
 	- Bug, antal i spalterna gör att det inte alltid blir rätt antal spalter
 		14 ord ger 5 spalter idag, 13 ger 5?, 15 ger 4 = fel, 16 ger 4 = fel, 17 ger 5, 11 ger 4= fel, 8 ger 4=fel, 6 ger 3=fel
+	- Ändra versionsnummer
 
 2020-11-27
 Version 1.0.0
