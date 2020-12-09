@@ -7,53 +7,29 @@ import java.util.regex.Pattern;
 import org.apache.commons.io.FilenameUtils;
 
 public class PicturedateHelper {
-	private static Pattern pattern1 = Pattern.compile("[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}\\.[0-9]{2}\\.[0-9]{2}");
-	private static Pattern pattern2 = Pattern.compile("[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}\\.[0-9]{2}\\.[0-9]{2}-[0-9]*");
-	private static Pattern pattern3 = Pattern.compile("[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}\\.[0-9]{2}\\.[0-9]{5}");
-	private static Pattern pattern4 = Pattern.compile("[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{4}");
+	private static Pattern pattern1 = Pattern.compile("[0-9]{4}-[0-9]{2}-[0-9]{2}");
 
 	public static String guessDateFromFilename(String filename) {
 		String filenameWithoutExtension = FilenameUtils.removeExtension(filename);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+		String dateFromFilename;
+		if (filenameWithoutExtension.length() < 10) {
+			dateFromFilename = "";
+		} else {
+			dateFromFilename = filenameWithoutExtension.substring(0, 10);
+		}
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH.mm.ss");
 		
-		if (pattern1.matcher(filenameWithoutExtension).find()) {
+		if (pattern1.matcher(dateFromFilename).find()) {
 			try {
-				LocalDate datum = LocalDate.parse(filenameWithoutExtension, formatter);
+				LocalDate datum = LocalDate.parse(dateFromFilename, formatter);
 				return datum.toString();
 			} catch (Exception e) {
 			}
 			
 		}
 
-		if (pattern2.matcher(filenameWithoutExtension).find()) {
-			try {
-				String test = filenameWithoutExtension.substring(0, 19);
-				LocalDate datum = LocalDate.parse(test, formatter);
-				return datum.toString();
-			} catch (Exception e) {
-			}
-			
-		}
-		
-		if (pattern3.matcher(filenameWithoutExtension).find()) {
-			try {
-				String test = filenameWithoutExtension.substring(0, 19);
-				LocalDate datum = LocalDate.parse(test, formatter);
-				return datum.toString();
-			} catch (Exception e) {
-			}
-		}
-		
-		if (pattern4.matcher(filenameWithoutExtension).find()) {
-			try {
-				String test = filenameWithoutExtension.substring(0, 11)+"01.01.01";
-				LocalDate datum = LocalDate.parse(test, formatter);
-				return datum.toString();
-			} catch (Exception e) {
-			}
-		}
-		
 		return "<datum saknas>";
 	}
 

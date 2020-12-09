@@ -62,6 +62,11 @@ Kan ev användas för en blädderfunktion i sökn.
 
 KLART
 =====
+2020-12-09
+Version 1.0.1
+-------------
+Refaktorering
+
 2020-12-01
 Version 1.0.0
 -------------
