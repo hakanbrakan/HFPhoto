@@ -1,7 +1,7 @@
 
 Att göra
 ========
-Version 1.0.1
+Version 1.0.2
 -------------
 
 
@@ -10,7 +10,6 @@ Senare
 På förstasidan visa aktuellt versionsnummer
 
 Refaktorera: metoden isPicture på Album borde flyttas till Picture och bli statisk
-Bugg: Antal bilder på album blir ett fel ibland då det finns en folder som heter .DS_Store
 Delete av bild funkar inte riktigt, ibland försöker den läsa upp en borttagen bild - jättekonstigt
 
 Max n st bilder läses upp åt gången vid sökning. Fundera på om det behövs, tror det, men ta från properties - idag är det hårdkodat
@@ -62,6 +61,11 @@ Kan ev användas för en blädderfunktion i sökn.
 
 KLART
 =====
+2020-12-10
+Version 1.0.1
+-------------
+Bugg: Antal bilder på album blir ett fel ibland då det finns en folder som heter .DS_Store
+
 2020-12-09
 Version 1.0.1
 -------------

@@ -277,8 +277,23 @@ public class Album {
 	}
 
 	public int getNumberOfPictures() {
-		int antalFiler = getPictureFolder().list().length;
-		return antalFiler;
+		File folder = getPictureFolder();
+		String[] lista = folder.list(getHiddenFileFilter());
+		return lista.length;
+	}
+
+	private FilenameFilter getHiddenFileFilter() {
+		FilenameFilter filter = new FilenameFilter() {
+			@Override
+			public boolean accept(File dir, String name) {
+				if (name.startsWith(".")) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+		};
+		return filter;
 	}
 
 }
