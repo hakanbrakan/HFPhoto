@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>HFPhoto</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>
+Album: <span th:text="${albumName}"></span>
+</h2>
+<br>Antal bilder: <span th:text="${numOfPictures}"></span><div align="right"><a th:href="@{/}"><span>Close</span></a></div>
+
+            	   <form th:action="@{/search}" th:object="${picInfoForm}" method="post">
+					<input type="hidden" id="albumName" name="albumName" th:value="${albumName}"></input>
+					<input type="hidden" id="pictureName" name="pictureName" th:value="*{pictureName}"></input>
+            	   	
+      				<label for="fromDate">Datum from:</label><input type="text" id="fromDate" name="fromDate" th:value="*{fromDate}">
+      				<label for="tomDate">Datum tom:</label><input type="text" id="tomDate" name="tomDate" th:value="*{tomDate}">
+
+					<table>
+					<tr>
+			        <td style="vertical-align:top" th:each="enSpalt : ${spalter}">
+				        <div th:each="ettIndex : ${enSpalt}">
+				            <input type="checkbox" th:field="*{valdaIndex}" th:value="${ettIndex}">
+				            <label th:for="${#ids.prev('valdaIndex')}"  th:text="${ettIndex}">Index saknas</label>
+				        </div>
+			        </td>
+					</tr>
+					</table>
+            	   
+					<div th:if="*{allaIndex.length > 0}" class="col-md-6 form-group">
+            			<input type="submit" value="Sök">
+            			</div>
+				</form>
+
+
+
+<p>
+Sök alla utan <a th:href="@{/searchAllWithoutIndex?albumName=}+${albumName}"><span>index</span></a>
+<p>
+
+<!-- Temporarily disabled
+<form action="/import" enctype="multipart/form-data">
+	<input type="hidden" id="albumName" name="albumName" th:value="${albumName}"></input>
+    <label for="fileToUpload">Filer att importera:</label>
+    <input type="file" name="fileToUpload" id="fileToUpload" multiple>
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+ -->
+
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>HFPhoto</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p>
+	<h2>HFPhoto</h2>
+	<div align="right"><a th:href="@{/shutdownContext}"><span>Shutdown</span></a></div>
+	
+
+
+	<table>
+    <thead>
+        <tr><th> Album </th></tr>
+    </thead>
+    <tbody>
+	    <tr th:if="${album.empty}">
+            <td colspan="2"> Finns inga album </td>
+        </tr>
+        <tr th:each="ettAlbum : ${album}">
+            <td><a th:href="@{/album?name=}+${ettAlbum.Namn}"><span th:text="${ettAlbum.Namn}"></span></a></td>
+        </tr>
+    </tbody>
+    </table>
+
+
+
+
+<p>
+	
+	<form action="/newAlbum" method="post">
+      <label for="albumname">Nytt album:</label><input type="text" id="albumname" name="albumname" placeholder="albumets namn">
+      <input type="submit" value="Skapa">
+    </form> 
+	
+	
+    <p><span th:text="${serverTime}"></span>
+</body>
+</html>

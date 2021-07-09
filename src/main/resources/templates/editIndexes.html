@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>HFPhoto</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<style>
+table {
+  border-collapse: collapse;
+  border: 0px solid black;
+} 
+
+th,td {
+  border: 0px solid black;
+}
+
+td.left {
+  vertical-align: top;
+}
+
+table.a {
+  table-layout: auto;
+  width: 100%;  
+}
+
+table.b {
+  table-layout: fixed;
+  width: 180px;  
+}
+
+table.c {
+  table-layout: auto;
+  width: 100%;  
+}
+
+table.d {
+  table-layout: fixed;
+  width: 100%;  
+}
+
+img {
+  width: 80%;  
+}
+
+.validationerror {background-color: #f44336;} /* Red */ 
+</style>
+
+</head>
+<body>
+	<p>
+	<h2>Album: <a th:href="@{/album?name=}+${albumName}"><span th:text="${albumName}"></span></a></h2>
+	<p>Editera Index</p>
+
+
+	<table  class="a">
+    <thead>
+        <tr>
+            <th colspan="2"><span th:text="${enTraff.pictureName}"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td  class="left">
+            	   <form th:action="@{/updateIndexes}" th:object="${picInfoForm}" method="post">
+					<input type="hidden" id="albumName" name="albumName" th:value="${albumName}"></input>
+					<input type="hidden" id="pictureName" name="pictureName" th:value="*{pictureName}"></input>
+            	   	
+      				<label for="picturedate">Datum:</label><input type="text" id="picturedate" name="picturedate" th:value="*{picturedate}">
+      				<label class="validationerror" th:if="*{invalidDate}" for="picturedate">Felaktigt datum:</label>
+			        <div th:each="ettIndex : *{allaIndex}">
+			            <input type="checkbox" th:field="*{valdaIndex}" th:value="${ettIndex}">
+			            <label th:for="${#ids.prev('valdaIndex')}"  th:text="${ettIndex}">Index saknas</label>
+			        </div>
+            	   
+            	   		<p>
+					<div class="col-md-6 form-group">
+            			<label for="newIndex">Nya index:</label>
+            			<input type="text" name="newIndex" class="form-control" th:field="*{newIndex}">
+            			<input type="submit" value="Spara">
+            			</div>
+				</form>
+            	</td>
+            <td th:if="${enTraff.isPicture}">
+               <img th:src="@{/picture?albumName=}+${albumName}+@{&pictureName=}+${enTraff.pictureName}">
+            	</td>
+            <td th:unless="${enTraff.isPicture}">
+				<video width="auto" height="600" controls style=" margin-left: auto; margin-right: auto; display: block;">
+				    <source th:src="@{/video(albumName=${albumName},id=${enTraff.pictureName})}" type="video/mp4">
+				</video>
+            	</td>
+        </tr>
+    </tbody>
+    </table>
+
+
+	
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>HFPhoto</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<style>
+table {
+  border-collapse: collapse;
+  border: 0px solid black;
+} 
+
+th,td {
+  border: 0px solid black;
+}
+
+td.left {
+  vertical-align: top;
+}
+
+table.a {
+  table-layout: auto;
+  width: 100%;  
+}
+
+table.b {
+  table-layout: fixed;
+  width: 180px;  
+}
+
+table.c {
+  table-layout: auto;
+  width: 100%;  
+}
+
+table.d {
+  table-layout: fixed;
+  width: 100%;  
+}
+
+img {
+  width: 80%;  
+}
+</style>
+
+</head>
+<body>
+	<p>
+	<h2>Album: <a th:href="@{/album?name=}+${albumName}"><span th:text="${albumName}"></span></a></h2>
+
+
+	<table  class="c">
+    <thead>
+        <tr>
+            <th colspan="2">Sökresultat</th>
+        </tr>
+    </thead>
+    <tbody>
+	    <tr th:if="${importedPictures.empty}">
+            <td colspan="2"> Hittade inga bilder </td>
+        </tr>
+        <tr th:unless="${importedPictures.empty}" th:each="enTraff : ${importedPictures}">
+            <td  class="left">
+                <span th:text="${enTraff.date}"></span>
+                <p>
+				<div th:each="ettIndex : ${enTraff.indexes}">
+					<label th:text="${ettIndex}">Index saknas</label>
+				</div>
+               <!-- 
+               <span th:text="${enTraff.isPicture}"></span>
+                -->
+                <p>
+                <a th:href="@{/editIndexes(albumName=${albumName},pictureName=${enTraff.pictureName})}"><span>Edit</span></a>
+               
+            	   <!-- <a th:href="@{/album?name=}+${ettAlbum.Namn}"><span th:text="${ettAlbum.Namn}"></span></a>  -->
+				<div th:if="${enTraff.indexes.empty}">
+					<p>
+                <a th:href="@{/deletePicture(albumName=${albumName},pictureName=${enTraff.pictureName})}"><span>Delete</span></a>
+				</div>
+            	</td>
+            <td th:if="${enTraff.isPicture}">
+               <img th:src="@{/picture?albumName=}+${albumName}+@{&pictureName=}+${enTraff.pictureName}">
+            	</td>
+            <td th:unless="${enTraff.isPicture}">
+				<video width="auto" height="600" controls style=" margin-left: auto; margin-right: auto; display: block;">
+				    <source th:src="@{/video(albumName=${albumName},id=${enTraff.pictureName})}" type="video/mp4">
+				</video>
+            	</td>
+        </tr>
+    </tbody>
+    </table>
+
+
+	
+</body>
+</html>

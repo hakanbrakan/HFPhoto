@@ -1,0 +1,251 @@
+
+Att göra
+========
+Version 1.0.2
+-------------
+
+
+Senare
+------
+På förstasidan visa aktuellt versionsnummer
+
+Refaktorera: metoden isPicture på Album borde flyttas till Picture och bli statisk
+Delete av bild funkar inte riktigt, ibland försöker den läsa upp en borttagen bild - jättekonstigt
+
+Max n st bilder läses upp åt gången vid sökning. Fundera på om det behövs, tror det, men ta från properties - idag är det hårdkodat
+
+Shutdown borde kanske implementera Postmapping istf get som egentligen inte rekommenderas
+classen är restcontroller men den andra är controller
+https://www.w3schools.com/css/css3_object-fit.asp
+
+192.168.1.6
+
+Hantera om albumrootpath saknas - idag kastas undantag
+
+Få igång tester
+
+Testa ha flera controllers
+
+Ändra namn på exempelpaket
+
+Kan ev användas för en blädderfunktion i sökn.
+    /**
+     * Returns a limited list of filenames starting at the given offset.
+     *
+     * @param filesLocation     the directory to scan
+     * @param filterDirectories should we include directories in results
+     * @param offset            the starting offset
+     * @param limit             the maximum number of results
+     * @return a collection of file names
+     */
+    private static Collection<String> getFiles(final String filesLocation, final boolean filterDirectories,
+            final int offset, final int limit) throws IOException {
+        Stream<Path> stream = Files.list(Paths.get(filesLocation));
+
+        if (filterDirectories) {
+            stream = stream.filter(path -> !Files.isDirectory(path));
+        }
+
+        return stream
+                .map(Path::toString)
+                .sorted()
+                .skip(offset)
+                .limit(limit)
+                .collect(Collectors.toList());
+    }
+    
+
+
+
+     
+
+KLART
+=====
+2020-12-10
+Version 1.0.1
+-------------
+Bugg: Antal bilder på album blir ett fel ibland då det finns en folder som heter .DS_Store
+
+2020-12-09
+Version 1.0.1
+-------------
+Refaktorering
+
+2020-12-01
+Version 1.0.0
+-------------
+Datum på bilden
+	Datum sökbart
+	- Bug, antal i spalterna gör att det inte alltid blir rätt antal spalter
+		14 ord ger 5 spalter idag, 13 ger 5?, 15 ger 4 = fel, 16 ger 4 = fel, 17 ger 5, 11 ger 4= fel, 8 ger 4=fel, 6 ger 3=fel
+	- Ändra versionsnummer
+
+2020-11-27
+Version 1.0.0
+-------------
+Datum på bilden
+	Datum sökbart
+	- Testa byggd jar och separat properties
+	- På readme beskriv hur man bygger en jar med maven
+
+2020-11-23
+Datum på bilden
+	Datum sökbart
+	- På albumsidan visa index i spalter
+	- Refaktorera storeDatePictureindex och nästa i indexHandler
+
+2020-11-22
+Datum på bilden
+	Datum sökbart
+	- Fler format på filnamnen
+
+2020-11-21
+Datum på bilden
+	Datum sökbart
+	- när bild tas bort skall även datum tas bort
+	- Bugg, datum sparas inte första gången om man behåller defaultvärdet - Funkar ändå, man behöver inte spara
+	- Visa antal bilder i album på albumsidan
+
+2020-11-20
+Datum på bilden
+	Datum sökbart
+	- om datum är oförändrat skall uppdatering ej ske
+	- sökning på datum, efter alla filtreringar på index i loopen
+
+2020-11-17
+Datum på bilden
+	Datum sökbart
+	- på editbilden skall sparat datum användas i första hand och gissat i andra
+	- i sökresultat vid index visa sparat datum
+	- när man byter datum på editsidan skall nya skrivas och gamla tas bort
+
+2020-11-16
+Datum på bilden
+	Datum sökbart
+	- spara datum för bilden
+
+2020-11-15
+Datum på bilden
+	Datum sökbart
+	- validering på datum editbilden
+	- kraschar när man sparar utan att ha valt något index
+
+2020-11-10
+Datum på bilden
+	Datum sökbart
+	- klass som gissar datum från filnamn + tester
+	- sök utan index, edit, visar gissat datum
+
+2020-11-08
+Ny featurebranch för datum feature/dateOnPicture
+Merge till develop
+På editsidan ta bort albumnamn precis ovanför bilden
+På albumsidan tillfälligt ta bort allt om import
+
+2020-11-07
+Max n st bilder läses upp åt gången vid sökning alla utan index
+
+2020-11-06
+Delete av bild och dess index
+
+2020-11-02
+Radera filmer och bilder från resources
+
+2020-11-01
+Shutdown på indexsidan
+	stänga av applikationen https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
+	     https://www.baeldung.com/spring-boot-shutdown
+	     https://stackoverflow.com/questions/26547532/how-to-shutdown-a-spring-boot-application-in-a-correct-way
+	     https://www.baeldung.com/spring-boot-web-server-shutdown
+Stänga album
+Funkar - application.properties ska funka utanför Eclipse
+
+2020-10-29
+Fixar problem med sökväg till cookies vid startup
+Sorterar träfflista vid sökning bilder med och utan index
+Bryt ut hårdkodad albumrootpath
+	tex ha några path i prio som testas och om någon finns så är det den vi kör på
+	/Volumes/HAKANBUP/.........
+	/Volumes/IngersBackup/.......
+	/testforutveckling............
+application.properties
+https://docs.spring.io/spring-boot/docs/1.0.1.RELEASE/reference/html/boot-features-external-config.html
+https://stackoverflow.com/questions/38775194/where-is-the-application-properties-file-in-a-spring-boot-project
+https://www.baeldung.com/spring-properties-file-outside-jar
+http://dolszewski.com/spring/spring-boot-application-properties-file/
+
+2020-10-28
+Sorterar album på förstasidan
+
+Efter edit gå tillbaka till rätt sökresultatsida
+
+2020-10-27
+Nullpointer när man klickar på sök och index saknas - sökknappen borde inte visas då
+
+2020-10-24
+Splitta nya index funkar inte - Jo nu
+
+På searchresult sortera index som visas
+
+2020-10-23
+På editsidan kunna byta gamla till nya index
+
+På träffresultat visa bildens index
+
+2020-10-22
+Söksida på index
+
+2020-10-21
+Store wordindex
+
+2020-10-15
+formulärhantering: https://attacomsian.com/blog/spring-boot-thymeleaf-form-handling
+                   https://www.codejava.net/frameworks/spring-boot/spring-boot-thymeleaf-form-handling-tutorial
+                   https://spring.io/guides/gs/handling-form-submission/
+                   svår att läsa men verkar rätt info https://mkyong.com/spring-mvc/spring-mvc-checkbox-and-checkboxes-example/
+				  https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#checkbox-fields
+
+2020-10-06
+Embryo till sida att editera index
+
+2020-10-05
+Sök alla som saknar index
+
+2020-10-04
+Visar sökresultat efter lyckad import
+
+2020-10-03
+Kopierar filer vid import
+
+2020-10-01
+Indexsidan
+	öppna album
+	create new album
+	lista alla album
+
+2020-09-27
+Datum och tid på indexsidan
+
+
+2020-09-26
+Byta testfilmer till något neutralt
+
+Byta paketnamn till min standard
+
+Indexpage - få upp första sidan i Eclipse och i paketerad jar
+	Eclipse
+		Ställ dig i HFPhoto
+		Kör ./mvnw spring-boot:run
+		Surfa till localhost:8080
+	kommandoraden
+		Ställ dig i HFPhoto
+		Kör ./mvnw clean package
+		Ställ dig i HFPhoto/target
+		Kör java -jar hfphoto-0.0.1-SNAPSHOT.jar
+		Surfa till localhost:8080
+
+Ta bort gammalt testpaket
+
+Datum och tid på greetingsidan
+
+		
