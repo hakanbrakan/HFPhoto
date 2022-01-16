@@ -78,4 +78,9 @@ public class PicturedateHelperTest {
 	public void bildHDR_2() {
 		assertEquals("2020-10-30", PicturedateHelper.guessDateFromFilename("2020-10-30 18.04.44 HDR-2.jpg"));
 	}
+	
+	@Test
+	public void bildOldFormatJpg() {
+		assertEquals("2008-08-05", PicturedateHelper.guessDateFromFilename("20080805_1634_00501.JPG"));
+	}
 }
