@@ -3,6 +3,12 @@ Att göra
 ========
 Version 1.0.2
 -------------
+Version 1.1.0
+-------------
+Patriks fix för storlek på bilder
+Bulktaggning på många bilder samtidigt när man söker bilder utan index, Taggen "_AttGora_BulkImported" sätts automatiskt.
+Description - Fritext kopplat till bilden. Ej sökbart
+Visa totalt antal bilder i sökresultat
 
 
 Senare
