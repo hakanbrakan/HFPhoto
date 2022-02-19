@@ -1,8 +1,9 @@
 
 Att göra
 ========
-Version 1.0.2
+Version 1.0.3
 -------------
+
 Version 1.1.0
 -------------
 Patriks fix för storlek på bilder
@@ -67,6 +68,12 @@ Kan ev användas för en blädderfunktion i sökn.
 
 KLART
 =====
+2022-02-19
+Version 1.0.2
+-------------
+Nytt fotoformat 20080805_1634_00501.JPG
+
+
 2020-12-10
 Version 1.0.1
 -------------

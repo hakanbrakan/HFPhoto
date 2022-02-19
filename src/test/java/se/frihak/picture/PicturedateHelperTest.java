@@ -83,4 +83,14 @@ public class PicturedateHelperTest {
 	public void bildOldFormatJpg() {
 		assertEquals("2008-08-05", PicturedateHelper.guessDateFromFilename("20080805_1634_00501.JPG"));
 	}
+	
+	@Test
+	public void bildOldFormatJpg_NotValid() {
+		assertEquals("<datum saknas>", PicturedateHelper.guessDateFromFilename("20081805_1634_00501.JPG"));
+	}
+	
+	@Test
+	public void bildOldFormatJpg_NotValid2() {
+		assertEquals("<datum saknas>", PicturedateHelper.guessDateFromFilename("20080835_1634_00501.JPG"));
+	}
 }

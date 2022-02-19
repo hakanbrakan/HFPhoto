@@ -8,10 +8,12 @@ import org.apache.commons.io.FilenameUtils;
 
 public class PicturedateHelper {
 	private static Pattern pattern1 = Pattern.compile("[0-9]{4}-[0-9]{2}-[0-9]{2}");
+	private static Pattern pattern2 = Pattern.compile("[0-9]{4}[0-9]{2}[0-9]{2}");
 
 	public static String guessDateFromFilename(String filename) {
 		String filenameWithoutExtension = FilenameUtils.removeExtension(filename);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyyMMdd");
 
 		String dateFromFilename;
 		if (filenameWithoutExtension.length() < 10) {
@@ -26,6 +28,17 @@ public class PicturedateHelper {
 				LocalDate datum = LocalDate.parse(dateFromFilename, formatter);
 				return datum.toString();
 			} catch (Exception e) {
+			}
+			
+		}
+
+		dateFromFilename = filenameWithoutExtension.substring(0, 8);
+		if (pattern2.matcher(dateFromFilename).find()) {
+			try {
+				LocalDate datum = LocalDate.parse(dateFromFilename, formatter2);
+				return datum.toString();
+			} catch (Exception e) {
+				return "<datum saknas>";
 			}
 			
 		}
