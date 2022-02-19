@@ -41,6 +41,14 @@ table.d {
 img {
   width: 80%;  
 }
+.test {
+  width:50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: auto;  
+}
 </style>
 
 </head>
@@ -78,10 +86,10 @@ img {
                 <a th:href="@{/deletePicture(albumName=${albumName},pictureName=${enTraff.pictureName})}"><span>Delete</span></a>
 				</div>
             	</td>
-            <td th:if="${enTraff.isPicture}">
+            <td class="test" th:if="${enTraff.isPicture}">
                <img th:src="@{/picture?albumName=}+${albumName}+@{&pictureName=}+${enTraff.pictureName}">
             	</td>
-            <td th:unless="${enTraff.isPicture}">
+            <td class="test" th:unless="${enTraff.isPicture}">
 				<video width="auto" height="600" controls style=" margin-left: auto; margin-right: auto; display: block;">
 				    <source th:src="@{/video(albumName=${albumName},id=${enTraff.pictureName})}" type="video/mp4">
 				</video>
